@@ -12,6 +12,7 @@ extension Color {
     static let secondary = Color.init(hex: 0xDCDE3B)
     static let text = Color.init(hex: 0x101010)
     static let backgroundTextField = Color.init(hex: 0xF5F6F7)
+    static let error = Color.init(hex: 0x811919)
     
     init(hex: UInt, alpha: Double = 1) {
         self.init(.sRGB,

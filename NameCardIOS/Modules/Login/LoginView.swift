@@ -12,12 +12,24 @@ struct LoginView : View {
     
     @ObservedObject private var _viewModel = LoginViewModel()
     
-    @State private var username: String = ""
-    @State private var password: String = ""
+    @State private var _username: String = ""
+    @State private var _password: String = ""
     
     private func onLoginClick() {
-        let body = ["username" : "lazi", "password" : "12345678"]
-        _viewModel.onLogin(data: body.toJsonData())
+        guard !_username.isEmpty else {
+            _viewModel.errorMessage = "Username required!"
+            return
+        }
+        guard !_password.isEmpty else {
+            _viewModel.errorMessage = "Password required!"
+            return
+        }
+        guard _password.count > 5 else {
+            _viewModel.errorMessage = "Invalid Username or Password!"
+            return
+        }
+
+        _viewModel.onLoginClick(username: _username.lowercased(), password: _password)
     }
     
     var body: some View {
@@ -39,6 +51,9 @@ struct LoginView : View {
                     .padding(.top, 8)
                     .padding(.bottom, 8)
                 loginButton
+                Text(_viewModel.errorMessage)
+                    .errorStyle()
+                    .padding(.top, 12)
                 Spacer()
             }
         }
@@ -49,15 +64,12 @@ struct LoginView : View {
         VStack {
             HStack {
                 Text("Username")
-                    .font(.primary(.regular))
+                    .textFieldLabelStyle()
                 Spacer()
             }
             
-            TextField("Username", text: $username)
-                .padding()
-                .foregroundColor(Color.text)
-                .background(RoundedRectangle(cornerRadius: 5.0).fill(Color.backgroundTextField))
-                .font(.primary(.regular))
+            TextField("Username", text: $_username)
+                .primaryTextFieldStyle()
         }
     }
     
@@ -65,15 +77,12 @@ struct LoginView : View {
         VStack {
             HStack {
                 Text("Password")
-                    .font(.primary(.regular))
+                    .textFieldLabelStyle()
                 Spacer()
             }
 
-            SecureField("Password", text: $password)
-                .padding()
-                .foregroundColor(Color.text)
-                .background(RoundedRectangle(cornerRadius: 5.0).fill(Color.backgroundTextField))
-                .font(.primary(.regular))
+            SecureField("Password", text: $_password)
+                .primaryTextFieldStyle()
         }
     }
     
@@ -81,8 +90,7 @@ struct LoginView : View {
         ZStack {
             Button("Login", action: onLoginClick)
                 .buttonStyle(FullWidthButton())
-                .font(.primary(.regular))
-            
+    
             HStack {
                 Spacer()
                 ProgressView()

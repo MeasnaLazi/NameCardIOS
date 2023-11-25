@@ -9,20 +9,27 @@ import Foundation
 import Combine
 
 struct APIClient {
-    private let defaultSession = URLSession(configuration: .default)
+    private let _defaultSession = URLSession(configuration: .default)
     var timeout : TimeInterval?
     var requestHeader : [String : String]? = ["Connection" : "Keep-Alive"]
     
     func execute<T>(_ request: Requestable) -> AnyPublisher<T, Error> where T : Responable {
         let urlRequest = self.createURLRequest(from: request)
         
-        return defaultSession.dataTaskPublisher(for: urlRequest)
+        return _defaultSession.dataTaskPublisher(for: urlRequest)
                             .catch({ error in
                                 return Fail(error: NSError(domain: "", code: 0, userInfo: [:])).eraseToAnyPublisher()
                             })
+                            .tryMap {
+                                let status = ($0.response as! HTTPURLResponse).statusCode
+                                if (status != 200) {
+                                    throw NSError(domain: "", code: status, userInfo: [:])
+                                }
+                                return $0
+                            }
                             .map { $0.data }
                             .tryMap {
-                                print("response: \(String(decoding: $0, as: UTF8.self))")
+                                print("response data: \(String(decoding: $0, as: UTF8.self))")
                                 return try T.decode($0)
                             }
                             .tryCatch ({ error -> AnyPublisher<T, Error> in

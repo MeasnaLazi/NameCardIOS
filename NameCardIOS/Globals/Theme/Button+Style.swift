@@ -21,6 +21,7 @@ struct FullWidthButton: ButtonStyle {
             .label
             .frame(maxWidth: .infinity)
             .padding()
+            .font(.primary(.regular))
             .foregroundColor(textColor)
             .cornerRadius(corner)
             .background(RoundedRectangle(cornerRadius: corner)

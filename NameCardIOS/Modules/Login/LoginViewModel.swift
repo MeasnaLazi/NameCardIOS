@@ -10,7 +10,7 @@ import Combine
 
 class LoginViewModel : BaseViewModel, ObservableObject {
     
-    let _repository: AuthRepository = AuthRepositoryImp()
+    private let _repository: AuthRepository = AuthRepositoryImp()
     
     enum State {
         case initial
@@ -20,26 +20,35 @@ class LoginViewModel : BaseViewModel, ObservableObject {
     }
     
     @Published private(set) var state: State = .initial
+    @Published var errorMessage: String = ""
     
-    func onLogin(data: Data) {
-        print("onLogin here!")
+    @Published private(set) var login: Login?
+    
+    private func onLogin(data: Data) {
         state = .loading
         
         _repository.onLogin(data: data)
             .receive(on: RunLoop.main)
-            .sink { completion in
+            .sink { [weak self] completion in
                 switch completion {
                 case .finished:
                     print("onLogin Finished")
                 case .failure(let error):
                     print("error: \(error)")
-                    self.state = .fail
+                    self?.errorMessage = "Invalid Username or Password!"
+                    self?.state = .fail
                 }
-            } receiveValue: { response in
-                print("response: \(response)")
-                self.state = .fetched
+            } receiveValue: { [weak self] response in
+                self?.errorMessage = ""
+                self?.login = response.data
+                self?.state = .fetched
             }
             .store(in: &disposable)
+    }
+    
+    func onLoginClick(username: String, password: String) {
+        let jsonData = ["username" : username, "password" : password].toJsonData()
+        self.onLogin(data: jsonData)
     }
     
 }

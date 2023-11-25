@@ -8,12 +8,12 @@
 import Foundation
 import Combine
 
-private let apiClient = APIClient()
+private let _apiClient = APIClient()
 
 protocol BaseRepository {}
 
 extension BaseRepository where Self : RequestExecutor {
     func execute<T>(_ request: Requestable) -> AnyPublisher<T, Error> where T : Responable {
-        return apiClient.execute(request)
+        return _apiClient.execute(request)
     }
 }

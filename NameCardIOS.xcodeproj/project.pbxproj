@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5511D52D2B1254B5000ADA01 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511D52C2B1254B5000ADA01 /* Text+Extension.swift */; };
+		5511D52F2B1255F0000ADA01 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511D52E2B1255F0000ADA01 /* View+Extension.swift */; };
+		5511D5312B12823E000ADA01 /* LoginViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511D5302B12823E000ADA01 /* LoginViewModelTest.swift */; };
 		558946C82B1109B800AFB838 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946C72B1109B800AFB838 /* Requestable.swift */; };
 		558946CA2B110B1D00AFB838 /* Responable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946C92B110B1D00AFB838 /* Responable.swift */; };
 		558946CE2B11306900AFB838 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946CD2B11306900AFB838 /* AuthApi.swift */; };
@@ -52,6 +55,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5511D52C2B1254B5000ADA01 /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
+		5511D52E2B1255F0000ADA01 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		5511D5302B12823E000ADA01 /* LoginViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTest.swift; sourceTree = "<group>"; };
 		558946C72B1109B800AFB838 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		558946C92B110B1D00AFB838 /* Responable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responable.swift; sourceTree = "<group>"; };
 		558946CD2B11306900AFB838 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
@@ -206,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				5598F4422B1101000063E864 /* NameCardIOSTests.swift */,
+				5511D5302B12823E000ADA01 /* LoginViewModelTest.swift */,
 			);
 			path = NameCardIOSTests;
 			sourceTree = "<group>";
@@ -260,6 +267,8 @@
 				558946E82B11888200AFB838 /* Button+Style.swift */,
 				558946ED2B118A7C00AFB838 /* Font+Extension.swift */,
 				558946F02B1194A400AFB838 /* Dictionary+Extension.swift */,
+				5511D52C2B1254B5000ADA01 /* Text+Extension.swift */,
+				5511D52E2B1255F0000ADA01 /* View+Extension.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -410,6 +419,7 @@
 				558946DF2B113BD300AFB838 /* Login.swift in Sources */,
 				558946DA2B113AC300AFB838 /* AuthRepository.swift in Sources */,
 				558946D62B11391600AFB838 /* BaseRepository.swift in Sources */,
+				5511D52D2B1254B5000ADA01 /* Text+Extension.swift in Sources */,
 				558946E32B113EFD00AFB838 /* LoginViewModel.swift in Sources */,
 				558946C82B1109B800AFB838 /* Requestable.swift in Sources */,
 				558946E12B113EA200AFB838 /* BaseViewModel.swift in Sources */,
@@ -419,6 +429,7 @@
 				558946E72B11810A00AFB838 /* Color+Extension.swift in Sources */,
 				558946EE2B118A7C00AFB838 /* Font+Extension.swift in Sources */,
 				5598F4322B1100FE0063E864 /* NameCardIOSApp.swift in Sources */,
+				5511D52F2B1255F0000ADA01 /* View+Extension.swift in Sources */,
 				558946DD2B113B3000AFB838 /* Base.swift in Sources */,
 				558946D12B11321F00AFB838 /* Const.swift in Sources */,
 			);
@@ -428,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5511D5312B12823E000ADA01 /* LoginViewModelTest.swift in Sources */,
 				5598F4432B1101000063E864 /* NameCardIOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
