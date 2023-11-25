@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 class LoginViewModel : BaseViewModel, ObservableObject {
+    
     let _repository: AuthRepository = AuthRepositoryImp()
     
     enum State {

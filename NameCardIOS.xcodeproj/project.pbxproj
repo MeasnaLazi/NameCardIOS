@@ -20,6 +20,11 @@
 		558946E12B113EA200AFB838 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946E02B113EA200AFB838 /* BaseViewModel.swift */; };
 		558946E32B113EFD00AFB838 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946E22B113EFD00AFB838 /* LoginViewModel.swift */; };
 		558946E52B1142E100AFB838 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946E42B1142E100AFB838 /* LoginView.swift */; };
+		558946E72B11810A00AFB838 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946E62B11810A00AFB838 /* Color+Extension.swift */; };
+		558946E92B11888200AFB838 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946E82B11888200AFB838 /* Button+Style.swift */; };
+		558946EC2B118A4F00AFB838 /* FuturaBT-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 558946EB2B118A4F00AFB838 /* FuturaBT-Light.ttf */; };
+		558946EE2B118A7C00AFB838 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946ED2B118A7C00AFB838 /* Font+Extension.swift */; };
+		558946F12B1194A400AFB838 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946F02B1194A400AFB838 /* Dictionary+Extension.swift */; };
 		5598F4322B1100FE0063E864 /* NameCardIOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598F4312B1100FE0063E864 /* NameCardIOSApp.swift */; };
 		5598F4342B1100FE0063E864 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598F4332B1100FE0063E864 /* ContentView.swift */; };
 		5598F4362B1101000063E864 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5598F4352B1101000063E864 /* Assets.xcassets */; };
@@ -60,6 +65,12 @@
 		558946E02B113EA200AFB838 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		558946E22B113EFD00AFB838 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		558946E42B1142E100AFB838 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		558946E62B11810A00AFB838 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		558946E82B11888200AFB838 /* Button+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
+		558946EB2B118A4F00AFB838 /* FuturaBT-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FuturaBT-Light.ttf"; sourceTree = "<group>"; };
+		558946ED2B118A7C00AFB838 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		558946EF2B118CDF00AFB838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		558946F02B1194A400AFB838 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		5598F42E2B1100FE0063E864 /* NameCardIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NameCardIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5598F4312B1100FE0063E864 /* NameCardIOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCardIOSApp.swift; sourceTree = "<group>"; };
 		5598F4332B1100FE0063E864 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -140,6 +151,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		558946EA2B118A2700AFB838 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				558946EB2B118A4F00AFB838 /* FuturaBT-Light.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		5598F4252B1100FE0063E864 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +182,8 @@
 		5598F4302B1100FE0063E864 /* NameCardIOS */ = {
 			isa = PBXGroup;
 			children = (
+				558946EF2B118CDF00AFB838 /* Info.plist */,
+				558946EA2B118A2700AFB838 /* Fonts */,
 				5598F45B2B1104570063E864 /* Globals */,
 				5598F45C2B11046B0063E864 /* Modules */,
 				5598F4332B1100FE0063E864 /* ContentView.swift */,
@@ -235,6 +256,10 @@
 		5598F45E2B1104BA0063E864 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				558946E62B11810A00AFB838 /* Color+Extension.swift */,
+				558946E82B11888200AFB838 /* Button+Style.swift */,
+				558946ED2B118A7C00AFB838 /* Font+Extension.swift */,
+				558946F02B1194A400AFB838 /* Dictionary+Extension.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -352,6 +377,7 @@
 			files = (
 				5598F4392B1101000063E864 /* Preview Assets.xcassets in Resources */,
 				5598F4362B1101000063E864 /* Assets.xcassets in Resources */,
+				558946EC2B118A4F00AFB838 /* FuturaBT-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				558946F12B1194A400AFB838 /* Dictionary+Extension.swift in Sources */,
 				558946D82B11399F00AFB838 /* RequestExecutor.swift in Sources */,
 				558946CE2B11306900AFB838 /* AuthApi.swift in Sources */,
 				558946D32B1133E900AFB838 /* APIClient.swift in Sources */,
@@ -387,7 +414,10 @@
 				558946C82B1109B800AFB838 /* Requestable.swift in Sources */,
 				558946E12B113EA200AFB838 /* BaseViewModel.swift in Sources */,
 				5598F4342B1100FE0063E864 /* ContentView.swift in Sources */,
+				558946E92B11888200AFB838 /* Button+Style.swift in Sources */,
 				558946CA2B110B1D00AFB838 /* Responable.swift in Sources */,
+				558946E72B11810A00AFB838 /* Color+Extension.swift in Sources */,
+				558946EE2B118A7C00AFB838 /* Font+Extension.swift in Sources */,
 				5598F4322B1100FE0063E864 /* NameCardIOSApp.swift in Sources */,
 				558946DD2B113B3000AFB838 /* Base.swift in Sources */,
 				558946D12B11321F00AFB838 /* Const.swift in Sources */,
@@ -556,6 +586,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"NameCardIOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NameCardIOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -584,6 +615,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"NameCardIOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NameCardIOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

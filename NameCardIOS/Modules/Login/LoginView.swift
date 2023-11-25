@@ -12,23 +12,83 @@ struct LoginView : View {
     
     @ObservedObject private var _viewModel = LoginViewModel()
     
+    @State private var username: String = ""
+    @State private var password: String = ""
+    
+    private func onLoginClick() {
+        let body = ["username" : "lazi", "password" : "12345678"]
+        _viewModel.onLogin(data: body.toJsonData())
+    }
+    
     var body: some View {
-        VStack {
+        ZStack {
             switch _viewModel.state {
             case .initial:
-                Text("Init")
+                Text("")
             case .loading:
-                Text("Loading")
+                Text("")
             case .fetched:
-                Text("Fetch")
+                Text("")
             case .fail:
-                Text("Failed")
+                Text("")
             }
-            Text("hii").onAppear() {
-                print("Call here!")
-                let body = ["username" : "lazi", "password" : "12345678"]
-                let jsonData = try? JSONSerialization.data(withJSONObject: body)
-                _viewModel.onLogin(data: jsonData!)
+        
+            VStack {
+                usernameTextField
+                passwordTextField
+                    .padding(.top, 8)
+                    .padding(.bottom, 8)
+                loginButton
+                Spacer()
+            }
+        }
+        .safeAreaPadding()
+    }
+    
+    private var usernameTextField: some View {
+        VStack {
+            HStack {
+                Text("Username")
+                    .font(.primary(.regular))
+                Spacer()
+            }
+            
+            TextField("Username", text: $username)
+                .padding()
+                .foregroundColor(Color.text)
+                .background(RoundedRectangle(cornerRadius: 5.0).fill(Color.backgroundTextField))
+                .font(.primary(.regular))
+        }
+    }
+    
+    private var passwordTextField: some View {
+        VStack {
+            HStack {
+                Text("Password")
+                    .font(.primary(.regular))
+                Spacer()
+            }
+
+            SecureField("Password", text: $password)
+                .padding()
+                .foregroundColor(Color.text)
+                .background(RoundedRectangle(cornerRadius: 5.0).fill(Color.backgroundTextField))
+                .font(.primary(.regular))
+        }
+    }
+    
+    private var loginButton: some View {
+        ZStack {
+            Button("Login", action: onLoginClick)
+                .buttonStyle(FullWidthButton())
+                .font(.primary(.regular))
+            
+            HStack {
+                Spacer()
+                ProgressView()
+                    .padding(.trailing, 16)
+                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                    .opacity(_viewModel.state == .loading ? 1.0 : 0.0)
             }
         }
     }
