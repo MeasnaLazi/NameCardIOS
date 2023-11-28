@@ -16,4 +16,10 @@ extension Text {
         self.font(.primary(.regular))
             .foregroundColor(.error)
     }
+    
+    func titleLabelStyle() -> some View {
+        self.font(.primary(.bold, size: 24))
+            .padding(.horizontal, 15)
+            .padding(.bottom, 10)
+    }
 }

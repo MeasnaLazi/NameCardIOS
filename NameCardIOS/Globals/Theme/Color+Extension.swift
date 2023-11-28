@@ -13,6 +13,9 @@ extension Color {
     static let text = Color.init(hex: 0x101010)
     static let backgroundTextField = Color.init(hex: 0xF5F6F7)
     static let error = Color.init(hex: 0x811919)
+    static let bgNavMenuItem = Color.init(hex: 0xF1F1F1)
+    static let shadow = Color.init(hex: 0xCCCCCC)
+    static let bgDefault = Color.init(hex: 0xEEEEEE)
     
     init(hex: UInt, alpha: Double = 1) {
         self.init(.sRGB,

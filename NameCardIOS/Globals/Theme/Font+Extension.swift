@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Font {
-    private static let _fontName = "FuturaBT-Light"
+//    private static let _fontName = "FuturaBT-Light"
     
     enum `Type` : String {
         case regular
@@ -18,11 +18,11 @@ extension Font {
         var fontName: String {
             switch self {
             case .regular:
-                return _fontName
+                return "SFProText-Regular"
             case .medium:
-                return _fontName
+                return "SFProText-Medium"
             case .bold:
-                return _fontName
+                return "SFProText-Bold"
             }
         }
     }
