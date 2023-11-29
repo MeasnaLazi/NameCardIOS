@@ -46,13 +46,19 @@ struct DetailView : View {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 20) {
                         // TODO
+                        ForEach(0..<20) {_ in 
+                            ItemDetailView()
+                            Divider()
+                        }
+                       
                     }
                     .padding()
                 }
                 .frame(maxWidth: .infinity)
                 .background(Color.white.clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous)).ignoresSafeArea())
                 .offset(y: isShowExpense ? 0 : height)
-                
+                .padding(.leading, 10)
+                .padding(.trailing, 10)
             }
             .padding([.horizontal, .top])
             .zIndex(-10)
@@ -66,10 +72,14 @@ struct DetailView : View {
     
     private var cardView : some View {
         ZStack(alignment: .bottomLeading) {
-            Image(card.image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .shadow(color: .shadow, radius: 5)
+            AsyncImage(url: URL(string: card.image.toFullPath())) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .shadow(color: .shadow, radius: 5)
+                } placeholder: {
+                    ProgressView()
+                }
         }
         .modifier(SwipeToDismissModifier(onDismiss: {
             withAnimation(.easeInOut) {

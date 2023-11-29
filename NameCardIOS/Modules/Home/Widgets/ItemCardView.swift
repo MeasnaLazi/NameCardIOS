@@ -19,11 +19,14 @@ struct ItemCardView : View {
             let offset = CGFloat(index * (isExpand ? 10 : 70))
             
             ZStack(alignment: .bottomLeading) {
-                Image(card.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .shadow(color: .shadow, radius: 5)
-                
+                AsyncImage(url: URL(string: card.image.toFullPath())) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .shadow(color: .shadow, radius: 5)
+                } placeholder: {
+                    ProgressView()
+                }
             }
             .offset(y: isExpand ? offset : -rect.minY + offset )
         }

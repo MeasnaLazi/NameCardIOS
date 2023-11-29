@@ -12,14 +12,7 @@ class LoginViewModel : BaseViewModel, ObservableObject {
     
     private let _repository: AuthRepository = AuthRepositoryImp()
     
-    enum State {
-        case initial
-        case loading
-        case fetched
-        case fail
-    }
-    
-    @Published private(set) var state: State = .initial
+    @Published private(set) var state: ViewState = .initial
     @Published var errorMessage: String = ""
     
     @Published private(set) var login: Login?

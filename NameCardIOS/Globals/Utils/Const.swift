@@ -9,4 +9,6 @@ import Foundation
 
 struct Const {
     let BASE_URL = "http://localhost:3000/api/v1"
+    let URL = "http://localhost:3000"
+    
 }

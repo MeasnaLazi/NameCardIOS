@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct HomeView : View {
-    
-    let cards = Array(0..<3).map { Card(id: "\($0)", image: "Card1") }
+
+    @AppStorage("token") private var token = ""
+    @ObservedObject private var _viewModel = HomeViewModel()
     @State var isExpand: Bool = false
-    
     @State var currentCard: Card!
     @State var isShowDetail: Bool = false
     
     @Namespace var animation
-    
+
+    private func onViewAppear() {
+        _viewModel.onViewAppear(token: token)
+    }
     
     private func getIndex(card: Card) -> Int {
-        return cards.firstIndex { item in
+        return _viewModel.cards.firstIndex { item in
             return item.id == card.id
         } ?? 0
     }
@@ -53,7 +56,7 @@ struct HomeView : View {
                 }
             ScrollView(.vertical,  showsIndicators: false) {
                 VStack(spacing: 0) {
-                    ForEach(cards) { card in
+                    ForEach(_viewModel.cards) { card in
                         itemCardView(card: card)
                     }
                 }
@@ -67,6 +70,7 @@ struct HomeView : View {
             }
             .coordinateSpace(name: "SCROLL")
             .offset(y: isExpand ? 0 : 30)
+            
         }
         .padding([.horizontal, .top])
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -75,6 +79,9 @@ struct HomeView : View {
             if let currentCard = currentCard, isShowDetail {
                 DetailView(card: currentCard, showDetailCard: $isShowDetail, animation: animation)
             }
+        }
+        .onAppear() {
+            onViewAppear()
         }
     }
     
