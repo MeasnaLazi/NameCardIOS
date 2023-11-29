@@ -24,15 +24,10 @@ enum NameCardApi : Requestable {
     }
     
     var header: [String : String] {
+        let token: String? = UserDefaults.standard.value(forKey: "token") as? String
         var headers = ["Content-Type": "application/json"]
-        var token: String = ""
         
-        switch self {
-        case.all(let receiveToken):
-           token = receiveToken
-        }
-        
-        if !token.isEmpty {
+        if let token = token {
             headers["Authorization"] = "Bearer \(token)"
         }
         
@@ -47,6 +42,6 @@ enum NameCardApi : Requestable {
         return nil
     }
     
-    case all(token: String)
+    case all
     
 }

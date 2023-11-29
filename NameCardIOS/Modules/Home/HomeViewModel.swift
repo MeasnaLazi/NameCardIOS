@@ -14,13 +14,13 @@ class HomeViewModel : BaseViewModel, ObservableObject {
     @Published private(set) var state: ViewState = .initial
     @Published private(set) var cards: [Card] = []
     
-    func onViewAppear(token: String) {
-        getAllNameCard(token: token)
+    func onViewAppear() {
+        getAllNameCard()
     }
     
-    private func getAllNameCard(token: String) {
+    private func getAllNameCard() {
         state = .loading
-        _nameCardRepository.getAll(token: token)
+        _nameCardRepository.getAll()
             .receive(on: RunLoop.main)
             .sink { [weak self] completion in
                 switch (completion) {

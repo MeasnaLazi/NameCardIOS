@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView : View {
 
-    @AppStorage("token") private var token = ""
     @ObservedObject private var _viewModel = HomeViewModel()
     @State var isExpand: Bool = false
     @State var currentCard: Card!
@@ -18,7 +17,7 @@ struct HomeView : View {
     @Namespace var animation
 
     private func onViewAppear() {
-        _viewModel.onViewAppear(token: token)
+        _viewModel.onViewAppear()
     }
     
     private func getIndex(card: Card) -> Int {
