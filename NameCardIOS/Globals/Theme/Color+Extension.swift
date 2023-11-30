@@ -11,6 +11,7 @@ extension Color {
     static let primary = Color.init(hex: 0xEE7447)
     static let secondary = Color.init(hex: 0xDCDE3B)
     static let text = Color.init(hex: 0x101010)
+    static let textSecondary = Color.init(hex: 0x686868)
     static let backgroundTextField = Color.init(hex: 0xF5F6F7)
     static let error = Color.init(hex: 0x811919)
     static let bgNavMenuItem = Color.init(hex: 0xF1F1F1)

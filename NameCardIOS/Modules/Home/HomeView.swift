@@ -76,7 +76,7 @@ struct HomeView : View {
         .opacity(isShowDetail ? 0 : 1)
         .overlay {
             if let currentCard = currentCard, isShowDetail {
-                DetailView(card: currentCard, showDetailCard: $isShowDetail, animation: animation)
+                DetailView(card: currentCard, animation: animation, showDetailCard: $isShowDetail)
             }
         }
         .onAppear() {

@@ -29,7 +29,7 @@ struct APIClient {
                             }
                             .map { $0.data }
                             .tryMap {
-                                print("response data: \(String(decoding: $0, as: UTF8.self))")
+//                                print("response data: \(String(decoding: $0, as: UTF8.self))")
                                 return try T.decode($0)
                             }
                             .tryCatch ({ error -> AnyPublisher<T, Error> in

@@ -25,7 +25,10 @@ struct ItemCardView : View {
                         .aspectRatio(contentMode: .fit)
                         .shadow(color: .shadow, radius: 5)
                 } placeholder: {
-                    ProgressView()
+                    Image("placeholder")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .shadow(color: .shadow, radius: 5)
                 }
             }
             .offset(y: isExpand ? offset : -rect.minY + offset )

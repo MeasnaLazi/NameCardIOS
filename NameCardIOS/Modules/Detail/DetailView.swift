@@ -10,19 +10,22 @@ import SwiftUI
 struct DetailView : View {
     
     var card: Card
-    @Binding var showDetailCard: Bool
     var animation: Namespace.ID
-    @State var isShowExpense:Bool = false
+    
+    @Binding var showDetailCard: Bool
+    @State var isShowInfo:Bool = false
+    @State var showInfoOpacity = 1.0
+    
     
     private func onViewAppear() {
         withAnimation(.easeOut.delay(0.1)) {
-            isShowExpense = true
+            isShowInfo = true
         }
     }
     
     private func onCardViewClick() {
         withAnimation(.easeInOut) {
-            isShowExpense = false
+            isShowInfo = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             withAnimation(.easeInOut(duration: 0.35)) {
@@ -44,24 +47,42 @@ struct DetailView : View {
             GeometryReader { proxy in
                 let height = proxy.size.height + 50
                 ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: 20) {
-                        // TODO
-                        ForEach(0..<20) {_ in 
-                            ItemDetailView()
+                    VStack(spacing: 14) {
+                        ItemDetailView(label: "First Name", text: card.firstname, icon: "person.circle", actionOpen: .none)
+                        Divider()
+                        
+                        if let lastname = card.lastname {
+                            ItemDetailView(label: "Last Name", text: lastname, icon: "person.circle", actionOpen: .none)
                             Divider()
                         }
-                       
+                        ItemDetailView(label: "Position", text: card.position, icon: "checkmark.circle", actionOpen: .none)
+                        Divider()
+                        ItemDetailView(label: "Phone", text: card.phone, icon: "phone.circle", actionOpen: .phone)
+                        Divider()
+                        ItemDetailView(label: "Email", text: card.email, icon: "envelope.circle", actionOpen: .email)
+                        Divider()
+                        
+                        if let address = card.address {
+                            ItemDetailView(label: "Address", text: address, icon: "location.circle", actionOpen: .map)
+                            Divider()
+                        }
+                        
+                        if let website = card.website {
+                            ItemDetailView(label: "Website", text: website, icon: "link.circle", actionOpen: .website)
+                            Divider()
+                        }
                     }
                     .padding()
                 }
                 .frame(maxWidth: .infinity)
-                .background(Color.white.clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous)).ignoresSafeArea())
-                .offset(y: isShowExpense ? 0 : height)
+                .background(Color.white.clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous)))
+                .offset(y: isShowInfo ? 0 : height)
                 .padding(.leading, 10)
                 .padding(.trailing, 10)
             }
             .padding([.horizontal, .top])
             .zIndex(-10)
+            .opacity(showInfoOpacity)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color.bgDefault.ignoresSafeArea())
@@ -78,19 +99,32 @@ struct DetailView : View {
                     .aspectRatio(contentMode: .fit)
                     .shadow(color: .shadow, radius: 5)
                 } placeholder: {
-                    ProgressView()
+                    Image("placeholder")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .shadow(color: .shadow, radius: 5)
                 }
         }
-        .modifier(SwipeToDismissModifier(onDismiss: {
-            withAnimation(.easeInOut) {
-                showDetailCard = false
-                isShowExpense = false
-            }
-        }))
+        .modifier(SwipeToDismissModifier(
+            onChange: { height in
+                let h = height - 50
+                if (h < 0 ) {
+                    showInfoOpacity = 1
+                } else {
+                    showInfoOpacity = 10 / h
+                }
+            },
+            onDismiss: {
+                withAnimation(.easeInOut) {
+                    showDetailCard = false
+                    isShowInfo = false
+                }
+            }))
     }
 }
 
 struct SwipeToDismissModifier: ViewModifier {
+    var onChange: (_ height: Double) -> Void
     var onDismiss: () -> Void
     @State private var offset: CGSize = .zero
 
@@ -101,6 +135,7 @@ struct SwipeToDismissModifier: ViewModifier {
             .simultaneousGesture(
                 DragGesture()
                     .onChanged { gesture in
+                        onChange(gesture.translation.height)
                         if gesture.translation.width < 50 {
                             offset = gesture.translation
                         }
@@ -110,8 +145,46 @@ struct SwipeToDismissModifier: ViewModifier {
                             onDismiss()
                         } else {
                             offset = .zero
+                            onChange(49)
                         }
                     }
             )
+    }
+}
+
+extension DetailView {
+    enum ActionOpen {
+        case phone
+        case email
+        case map
+        case website
+        case none
+        
+        func open(text: String) {
+            var url: URL?
+            switch self {
+            case .phone:
+                url = URL(string: "tel://\(text)")
+            case .email:
+                url = URL(string: "mailto:\(text)")
+            case .map:
+                url = URL(string: "http://maps.apple.com/?address=\(text)")
+            case .website:
+                url = URL(string: text)
+            default:
+                url = nil
+            }
+            
+            guard let url = url else {
+                return
+            }
+            guard UIApplication.shared.canOpenURL(url) else {
+                print("can not open : \(url)")
+                return
+            }
+            
+            UIApplication.shared.open(url, options: [:])
+            
+        }
     }
 }
