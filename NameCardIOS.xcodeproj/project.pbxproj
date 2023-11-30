@@ -10,6 +10,15 @@
 		5511D52D2B1254B5000ADA01 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511D52C2B1254B5000ADA01 /* Text+Extension.swift */; };
 		5511D52F2B1255F0000ADA01 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511D52E2B1255F0000ADA01 /* View+Extension.swift */; };
 		5511D5312B12823E000ADA01 /* LoginViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511D5302B12823E000ADA01 /* LoginViewModelTest.swift */; };
+		552C81A22B13AACA00E38B0B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C81A12B13AACA00E38B0B /* Card.swift */; };
+		552F41522B1819D50092146B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F41512B1819D50092146B /* LoadingView.swift */; };
+		556F7CB12B15724A001FC880 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F7CB02B15724A001FC880 /* HomeView.swift */; };
+		556F7CB32B1572D1001FC880 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 556F7CB22B1572D1001FC880 /* SF-Pro-Text-Regular.otf */; };
+		556F7CB72B1572E2001FC880 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 556F7CB62B1572E1001FC880 /* SF-Pro-Text-Medium.otf */; };
+		556F7CB92B1572E9001FC880 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 556F7CB82B1572E9001FC880 /* SF-Pro-Text-Bold.otf */; };
+		556F7CBC2B1573E7001FC880 /* ItemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F7CBB2B1573E7001FC880 /* ItemCardView.swift */; };
+		556F7CBE2B157A5F001FC880 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F7CBD2B157A5F001FC880 /* DetailView.swift */; };
+		556F7CC22B158FEA001FC880 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F7CC12B158FEA001FC880 /* ItemDetailView.swift */; };
 		558946C82B1109B800AFB838 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946C72B1109B800AFB838 /* Requestable.swift */; };
 		558946CA2B110B1D00AFB838 /* Responable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946C92B110B1D00AFB838 /* Responable.swift */; };
 		558946CE2B11306900AFB838 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946CD2B11306900AFB838 /* AuthApi.swift */; };
@@ -25,7 +34,6 @@
 		558946E52B1142E100AFB838 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946E42B1142E100AFB838 /* LoginView.swift */; };
 		558946E72B11810A00AFB838 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946E62B11810A00AFB838 /* Color+Extension.swift */; };
 		558946E92B11888200AFB838 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946E82B11888200AFB838 /* Button+Style.swift */; };
-		558946EC2B118A4F00AFB838 /* FuturaBT-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 558946EB2B118A4F00AFB838 /* FuturaBT-Light.ttf */; };
 		558946EE2B118A7C00AFB838 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946ED2B118A7C00AFB838 /* Font+Extension.swift */; };
 		558946F12B1194A400AFB838 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946F02B1194A400AFB838 /* Dictionary+Extension.swift */; };
 		5598F4322B1100FE0063E864 /* NameCardIOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598F4312B1100FE0063E864 /* NameCardIOSApp.swift */; };
@@ -35,6 +43,11 @@
 		5598F4432B1101000063E864 /* NameCardIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598F4422B1101000063E864 /* NameCardIOSTests.swift */; };
 		5598F44D2B1101000063E864 /* NameCardIOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598F44C2B1101000063E864 /* NameCardIOSUITests.swift */; };
 		5598F44F2B1101000063E864 /* NameCardIOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598F44E2B1101000063E864 /* NameCardIOSUITestsLaunchTests.swift */; };
+		55A82EDA2B16D6CA001C3F91 /* NameCardApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A82ED92B16D6CA001C3F91 /* NameCardApi.swift */; };
+		55A82EDC2B16D835001C3F91 /* NameCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A82EDB2B16D835001C3F91 /* NameCardRepository.swift */; };
+		55A82EDE2B16D986001C3F91 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A82EDD2B16D986001C3F91 /* HomeViewModel.swift */; };
+		55A82EE02B16D9CF001C3F91 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A82EDF2B16D9CF001C3F91 /* ViewState.swift */; };
+		55A82EE22B16DC88001C3F91 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A82EE12B16DC88001C3F91 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +71,15 @@
 		5511D52C2B1254B5000ADA01 /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
 		5511D52E2B1255F0000ADA01 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		5511D5302B12823E000ADA01 /* LoginViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTest.swift; sourceTree = "<group>"; };
+		552C81A12B13AACA00E38B0B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		552F41512B1819D50092146B /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		556F7CB02B15724A001FC880 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		556F7CB22B1572D1001FC880 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		556F7CB62B1572E1001FC880 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		556F7CB82B1572E9001FC880 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
+		556F7CBB2B1573E7001FC880 /* ItemCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardView.swift; sourceTree = "<group>"; };
+		556F7CBD2B157A5F001FC880 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		556F7CC12B158FEA001FC880 /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 		558946C72B1109B800AFB838 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		558946C92B110B1D00AFB838 /* Responable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responable.swift; sourceTree = "<group>"; };
 		558946CD2B11306900AFB838 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
@@ -73,7 +95,6 @@
 		558946E42B1142E100AFB838 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		558946E62B11810A00AFB838 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		558946E82B11888200AFB838 /* Button+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
-		558946EB2B118A4F00AFB838 /* FuturaBT-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FuturaBT-Light.ttf"; sourceTree = "<group>"; };
 		558946ED2B118A7C00AFB838 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		558946EF2B118CDF00AFB838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		558946F02B1194A400AFB838 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
@@ -87,6 +108,11 @@
 		5598F4482B1101000063E864 /* NameCardIOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NameCardIOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5598F44C2B1101000063E864 /* NameCardIOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCardIOSUITests.swift; sourceTree = "<group>"; };
 		5598F44E2B1101000063E864 /* NameCardIOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCardIOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		55A82ED92B16D6CA001C3F91 /* NameCardApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCardApi.swift; sourceTree = "<group>"; };
+		55A82EDB2B16D835001C3F91 /* NameCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCardRepository.swift; sourceTree = "<group>"; };
+		55A82EDD2B16D986001C3F91 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		55A82EDF2B16D9CF001C3F91 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		55A82EE12B16DC88001C3F91 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,10 +140,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5511D5322B12DE2E000ADA01 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				556F7CBA2B1573CA001FC880 /* Widgets */,
+				556F7CB02B15724A001FC880 /* HomeView.swift */,
+				55A82EDD2B16D986001C3F91 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		556F7CBA2B1573CA001FC880 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				556F7CBB2B1573E7001FC880 /* ItemCardView.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		556F7CBF2B15878F001FC880 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				556F7CC02B158FD8001FC880 /* Widgets */,
+				556F7CBD2B157A5F001FC880 /* DetailView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		556F7CC02B158FD8001FC880 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				556F7CC12B158FEA001FC880 /* ItemDetailView.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
 		558946CB2B112EC100AFB838 /* Api */ = {
 			isa = PBXGroup;
 			children = (
 				558946CD2B11306900AFB838 /* AuthApi.swift */,
+				55A82ED92B16D6CA001C3F91 /* NameCardApi.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -135,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				558946D02B11321F00AFB838 /* Const.swift */,
+				55A82EDF2B16D9CF001C3F91 /* ViewState.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -144,6 +207,7 @@
 			children = (
 				558946D52B11391600AFB838 /* BaseRepository.swift */,
 				558946D92B113AC300AFB838 /* AuthRepository.swift */,
+				55A82EDB2B16D835001C3F91 /* NameCardRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -153,6 +217,7 @@
 			children = (
 				558946DC2B113B3000AFB838 /* Base.swift */,
 				558946DE2B113BD300AFB838 /* Login.swift */,
+				552C81A12B13AACA00E38B0B /* Card.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,7 +225,9 @@
 		558946EA2B118A2700AFB838 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				558946EB2B118A4F00AFB838 /* FuturaBT-Light.ttf */,
+				556F7CB82B1572E9001FC880 /* SF-Pro-Text-Bold.otf */,
+				556F7CB62B1572E1001FC880 /* SF-Pro-Text-Medium.otf */,
+				556F7CB22B1572D1001FC880 /* SF-Pro-Text-Regular.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -232,7 +299,7 @@
 				5598F45D2B1104A50063E864 /* Data */,
 				5598F45E2B1104BA0063E864 /* Theme */,
 				558946CF2B1131FB00AFB838 /* Utils */,
-				5598F45F2B1104CD0063E864 /* Widget */,
+				5598F45F2B1104CD0063E864 /* Widgets */,
 			);
 			path = Globals;
 			sourceTree = "<group>";
@@ -240,6 +307,8 @@
 		5598F45C2B11046B0063E864 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				556F7CBF2B15878F001FC880 /* Detail */,
+				5511D5322B12DE2E000ADA01 /* Home */,
 				558946CC2B112EFF00AFB838 /* Login */,
 				558946E02B113EA200AFB838 /* BaseViewModel.swift */,
 			);
@@ -269,15 +338,17 @@
 				558946F02B1194A400AFB838 /* Dictionary+Extension.swift */,
 				5511D52C2B1254B5000ADA01 /* Text+Extension.swift */,
 				5511D52E2B1255F0000ADA01 /* View+Extension.swift */,
+				55A82EE12B16DC88001C3F91 /* String+Extension.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
 		};
-		5598F45F2B1104CD0063E864 /* Widget */ = {
+		5598F45F2B1104CD0063E864 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				552F41512B1819D50092146B /* LoadingView.swift */,
 			);
-			path = Widget;
+			path = Widgets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,8 +456,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5598F4392B1101000063E864 /* Preview Assets.xcassets in Resources */,
+				556F7CB92B1572E9001FC880 /* SF-Pro-Text-Bold.otf in Resources */,
 				5598F4362B1101000063E864 /* Assets.xcassets in Resources */,
-				558946EC2B118A4F00AFB838 /* FuturaBT-Light.ttf in Resources */,
+				556F7CB72B1572E2001FC880 /* SF-Pro-Text-Medium.otf in Resources */,
+				556F7CB32B1572D1001FC880 /* SF-Pro-Text-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,21 +489,32 @@
 				558946CE2B11306900AFB838 /* AuthApi.swift in Sources */,
 				558946D32B1133E900AFB838 /* APIClient.swift in Sources */,
 				558946E52B1142E100AFB838 /* LoginView.swift in Sources */,
+				552F41522B1819D50092146B /* LoadingView.swift in Sources */,
 				558946DF2B113BD300AFB838 /* Login.swift in Sources */,
 				558946DA2B113AC300AFB838 /* AuthRepository.swift in Sources */,
+				55A82EE22B16DC88001C3F91 /* String+Extension.swift in Sources */,
 				558946D62B11391600AFB838 /* BaseRepository.swift in Sources */,
+				556F7CBE2B157A5F001FC880 /* DetailView.swift in Sources */,
 				5511D52D2B1254B5000ADA01 /* Text+Extension.swift in Sources */,
+				556F7CC22B158FEA001FC880 /* ItemDetailView.swift in Sources */,
 				558946E32B113EFD00AFB838 /* LoginViewModel.swift in Sources */,
 				558946C82B1109B800AFB838 /* Requestable.swift in Sources */,
 				558946E12B113EA200AFB838 /* BaseViewModel.swift in Sources */,
 				5598F4342B1100FE0063E864 /* ContentView.swift in Sources */,
+				55A82EDE2B16D986001C3F91 /* HomeViewModel.swift in Sources */,
 				558946E92B11888200AFB838 /* Button+Style.swift in Sources */,
 				558946CA2B110B1D00AFB838 /* Responable.swift in Sources */,
 				558946E72B11810A00AFB838 /* Color+Extension.swift in Sources */,
 				558946EE2B118A7C00AFB838 /* Font+Extension.swift in Sources */,
+				552C81A22B13AACA00E38B0B /* Card.swift in Sources */,
+				55A82EDA2B16D6CA001C3F91 /* NameCardApi.swift in Sources */,
 				5598F4322B1100FE0063E864 /* NameCardIOSApp.swift in Sources */,
+				55A82EE02B16D9CF001C3F91 /* ViewState.swift in Sources */,
 				5511D52F2B1255F0000ADA01 /* View+Extension.swift in Sources */,
+				556F7CB12B15724A001FC880 /* HomeView.swift in Sources */,
 				558946DD2B113B3000AFB838 /* Base.swift in Sources */,
+				556F7CBC2B1573E7001FC880 /* ItemCardView.swift in Sources */,
+				55A82EDC2B16D835001C3F91 /* NameCardRepository.swift in Sources */,
 				558946D12B11321F00AFB838 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
