@@ -46,41 +46,54 @@ struct HomeView : View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            Text("CARDS")
-                .titleLabelStyle()
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: isExpand ? .leading : .center)
-                .overlay(alignment: .trailing) {
-                    expandButton
-                }
-            ScrollView(.vertical,  showsIndicators: false) {
-                VStack(spacing: 0) {
-                    ForEach(_viewModel.cards) { card in
-                        itemCardView(card: card)
-                    }
-                }
-                .padding([.horizontal, .top])
-                .overlay {
-                   invisibleOverlayView
-                }
-                .padding(.top, isExpand ? 30 : 0)
-                
-                createButton
+        ZStack {
+            switch _viewModel.state {
+            case .initial:
+                Text("")
+            case .loading:
+                LoadingView()
+            case .fetched:
+                Text("")
+            case .fail:
+                Text("")
             }
-            .coordinateSpace(name: "SCROLL")
-            .offset(y: isExpand ? 0 : 30)
             
-        }
-        .padding([.horizontal, .top])
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .opacity(isShowDetail ? 0 : 1)
-        .overlay {
-            if let currentCard = currentCard, isShowDetail {
-                DetailView(card: currentCard, animation: animation, showDetailCard: $isShowDetail)
+            VStack(spacing: 0) {
+                Text("CARDS")
+                    .titleLabelStyle()
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: isExpand ? .leading : .center)
+                    .overlay(alignment: .trailing) {
+                        expandButton
+                    }
+                ScrollView(.vertical,  showsIndicators: false) {
+                    VStack(spacing: 0) {
+                        ForEach(_viewModel.cards) { card in
+                            itemCardView(card: card)
+                        }
+                    }
+                    .padding([.horizontal, .top])
+                    .overlay {
+                       invisibleOverlayView
+                    }
+                    .padding(.top, isExpand ? 30 : 0)
+                    
+                    createButton
+                }
+                .coordinateSpace(name: "SCROLL")
+                .offset(y: isExpand ? 0 : 30)
+                
             }
-        }
-        .onAppear() {
-            onViewAppear()
+            .padding([.horizontal, .top])
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .opacity(isShowDetail ? 0 : 1)
+            .overlay {
+                if let currentCard = currentCard, isShowDetail {
+                    DetailView(card: currentCard, animation: animation, showDetailCard: $isShowDetail)
+                }
+            }
+            .onAppear() {
+                onViewAppear()
+            }
         }
     }
     
