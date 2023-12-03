@@ -10,12 +10,16 @@ import Combine
 
 class LoginViewModel : BaseViewModel, ObservableObject {
     
-    private let _repository: AuthRepository = AuthRepositoryImp()
+    private let _repository: AuthRepository
     
     @Published private(set) var state: ViewState = .initial
     @Published var errorMessage: String = ""
     
     @Published private(set) var login: Login?
+    
+    init(repository: AuthRepository) {
+        self._repository = repository
+    }
     
     private func onLogin(data: Data) {
         state = .loading
@@ -45,3 +49,5 @@ class LoginViewModel : BaseViewModel, ObservableObject {
     }
     
 }
+
+

@@ -14,6 +14,7 @@ public protocol Requestable {
     var header : [String : String] { get }
     var paramater : Paramater? { get }
     var timeout : TimeInterval? { get }
+    var mockDataFileName: String? { get }
 }
 
 public enum HTTPMethod : String {

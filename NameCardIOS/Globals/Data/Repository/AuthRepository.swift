@@ -20,3 +20,11 @@ struct AuthRepositoryImp : AuthRepository, BaseRepository {
 
 extension AuthRepositoryImp : RequestExecutor {}
 
+struct AuthRepositoryMock : AuthRepository, BaseRepositoryMock {
+    func onLogin(data: Data) -> AnyPublisher<Base<Login>, Error> {
+        execute(AuthApi.login(data: data))
+    }
+}
+
+extension AuthRepositoryMock : RequestExecutor {}
+

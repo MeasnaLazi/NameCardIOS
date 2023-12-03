@@ -41,6 +41,13 @@ enum AuthApi : Requestable {
         return nil
     }
     
+    var mockDataFileName: String?  {
+        switch self {
+        case .login:
+            return "login"
+        }
+    }
+    
     case login(data: Data)
     
     

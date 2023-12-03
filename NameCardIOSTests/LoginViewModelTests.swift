@@ -9,7 +9,7 @@ import Combine
 import XCTest
 @testable import NameCardIOS
 
-final class LoginViewModelTest: XCTestCase {
+final class LoginViewModelTests: XCTestCase {
     
     private var _disposables = Set<AnyCancellable>()
     private var _loginViewModel:LoginViewModel!
@@ -17,7 +17,7 @@ final class LoginViewModelTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        _loginViewModel = LoginViewModel()
+        _loginViewModel = LoginViewModel(repository: AuthRepositoryMock())
     }
     
     override func tearDown() {
