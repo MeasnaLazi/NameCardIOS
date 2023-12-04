@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5502B9B02B1D681900C544A2 /* MockServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502B9AF2B1D681900C544A2 /* MockServer.swift */; };
+		5502B9B32B1D70F100C544A2 /* MockAuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502B9B22B1D70F100C544A2 /* MockAuthApi.swift */; };
+		5502B9B52B1D714300C544A2 /* MockNameCardApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502B9B42B1D714300C544A2 /* MockNameCardApi.swift */; };
+		5502B9B72B1D720600C544A2 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502B9B62B1D720600C544A2 /* Data+Extension.swift */; };
 		5511D52D2B1254B5000ADA01 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511D52C2B1254B5000ADA01 /* Text+Extension.swift */; };
 		5511D52F2B1255F0000ADA01 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511D52E2B1255F0000ADA01 /* View+Extension.swift */; };
 		5511D5312B12823E000ADA01 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511D5302B12823E000ADA01 /* LoginViewModelTests.swift */; };
 		55220D7E2B1C11CB00840F71 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 55220D7D2B1C11CB00840F71 /* login.json */; };
-		55220D812B1C13D700840F71 /* APIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55220D802B1C13D700840F71 /* APIClientMock.swift */; };
+		55220D812B1C13D700840F71 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55220D802B1C13D700840F71 /* MockAPIClient.swift */; };
 		552C81A22B13AACA00E38B0B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C81A12B13AACA00E38B0B /* Card.swift */; };
 		552F41522B1819D50092146B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F41512B1819D50092146B /* LoadingView.swift */; };
 		556F7CB12B15724A001FC880 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F7CB02B15724A001FC880 /* HomeView.swift */; };
@@ -71,11 +75,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5502B9AF2B1D681900C544A2 /* MockServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServer.swift; sourceTree = "<group>"; };
+		5502B9B22B1D70F100C544A2 /* MockAuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthApi.swift; sourceTree = "<group>"; };
+		5502B9B42B1D714300C544A2 /* MockNameCardApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNameCardApi.swift; sourceTree = "<group>"; };
+		5502B9B62B1D720600C544A2 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		5511D52C2B1254B5000ADA01 /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
 		5511D52E2B1255F0000ADA01 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		5511D5302B12823E000ADA01 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		55220D7D2B1C11CB00840F71 /* login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
-		55220D802B1C13D700840F71 /* APIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientMock.swift; sourceTree = "<group>"; };
+		55220D802B1C13D700840F71 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
 		552C81A12B13AACA00E38B0B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		552F41512B1819D50092146B /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		556F7CB02B15724A001FC880 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -146,6 +154,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5502B9B12B1D70DE00C544A2 /* MockApi */ = {
+			isa = PBXGroup;
+			children = (
+				5502B9B22B1D70F100C544A2 /* MockAuthApi.swift */,
+				5502B9B42B1D714300C544A2 /* MockNameCardApi.swift */,
+			);
+			path = MockApi;
+			sourceTree = "<group>";
+		};
 		5511D5322B12DE2E000ADA01 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,7 +184,9 @@
 		55220D7F2B1C12D600840F71 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				55220D802B1C13D700840F71 /* APIClientMock.swift */,
+				5502B9B12B1D70DE00C544A2 /* MockApi */,
+				55220D802B1C13D700840F71 /* MockAPIClient.swift */,
+				5502B9AF2B1D681900C544A2 /* MockServer.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -364,6 +383,7 @@
 				5511D52C2B1254B5000ADA01 /* Text+Extension.swift */,
 				5511D52E2B1255F0000ADA01 /* View+Extension.swift */,
 				55A82EE12B16DC88001C3F91 /* String+Extension.swift */,
+				5502B9B62B1D720600C544A2 /* Data+Extension.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -510,12 +530,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5502B9B32B1D70F100C544A2 /* MockAuthApi.swift in Sources */,
 				558946F12B1194A400AFB838 /* Dictionary+Extension.swift in Sources */,
 				558946D82B11399F00AFB838 /* RequestExecutor.swift in Sources */,
 				558946CE2B11306900AFB838 /* AuthApi.swift in Sources */,
 				558946D32B1133E900AFB838 /* APIClient.swift in Sources */,
 				558946E52B1142E100AFB838 /* LoginView.swift in Sources */,
 				552F41522B1819D50092146B /* LoadingView.swift in Sources */,
+				5502B9B52B1D714300C544A2 /* MockNameCardApi.swift in Sources */,
 				558946DF2B113BD300AFB838 /* Login.swift in Sources */,
 				558946DA2B113AC300AFB838 /* AuthRepository.swift in Sources */,
 				55A82EE22B16DC88001C3F91 /* String+Extension.swift in Sources */,
@@ -530,6 +552,7 @@
 				55A82EDE2B16D986001C3F91 /* HomeViewModel.swift in Sources */,
 				558946E92B11888200AFB838 /* Button+Style.swift in Sources */,
 				558946CA2B110B1D00AFB838 /* Responable.swift in Sources */,
+				5502B9B02B1D681900C544A2 /* MockServer.swift in Sources */,
 				558946E72B11810A00AFB838 /* Color+Extension.swift in Sources */,
 				558946EE2B118A7C00AFB838 /* Font+Extension.swift in Sources */,
 				552C81A22B13AACA00E38B0B /* Card.swift in Sources */,
@@ -538,7 +561,8 @@
 				55A82EE02B16D9CF001C3F91 /* ViewState.swift in Sources */,
 				5511D52F2B1255F0000ADA01 /* View+Extension.swift in Sources */,
 				556F7CB12B15724A001FC880 /* HomeView.swift in Sources */,
-				55220D812B1C13D700840F71 /* APIClientMock.swift in Sources */,
+				5502B9B72B1D720600C544A2 /* Data+Extension.swift in Sources */,
+				55220D812B1C13D700840F71 /* MockAPIClient.swift in Sources */,
 				558946DD2B113B3000AFB838 /* Base.swift in Sources */,
 				556F7CBC2B1573E7001FC880 /* ItemCardView.swift in Sources */,
 				55A82EDC2B16D835001C3F91 /* NameCardRepository.swift in Sources */,

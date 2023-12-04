@@ -41,11 +41,7 @@ enum NameCardApi : Requestable {
     var timeout: TimeInterval? {
         return nil
     }
-    
-    var mockDataFileName: String?  {
-        return nil
-    }
-    
+        
     case all
     
 }

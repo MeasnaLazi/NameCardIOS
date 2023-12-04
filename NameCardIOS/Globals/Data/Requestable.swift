@@ -7,14 +7,13 @@
 
 import Foundation
 
-public protocol Requestable {
+public protocol Requestable : MockServer {
     var requestURL : URL { get }
     var path : String? { get }
     var httpMethod : HTTPMethod { get }
     var header : [String : String] { get }
     var paramater : Paramater? { get }
     var timeout : TimeInterval? { get }
-    var mockDataFileName: String? { get }
 }
 
 public enum HTTPMethod : String {
@@ -28,3 +27,5 @@ public enum Paramater {
     case body(Data)
     case query([String : String])
 }
+
+

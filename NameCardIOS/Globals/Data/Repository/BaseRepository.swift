@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 private let _apiClient = APIClient()
-private let _apiClientMock = APIClientMock()
+private let _mockApiClient = MockAPIClient()
 
 protocol BaseRepository {
     var type: RepositoryType { set get }
@@ -26,7 +26,7 @@ extension BaseRepository where Self : RequestExecutor {
         case .api:
             return _apiClient.execute(request)
         case .mock:
-            return _apiClientMock.execute(request)
+            return _mockApiClient.execute(request)
         }
     }
 }
