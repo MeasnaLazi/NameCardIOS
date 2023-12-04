@@ -13,18 +13,12 @@ protocol AuthRepository {
 }
 
 struct AuthRepositoryImp : AuthRepository, BaseRepository {
+    
+    var type: RepositoryType = .api
+    
     func onLogin(data: Data) -> AnyPublisher<Base<Login>, Error> {
         execute(AuthApi.login(data: data))
     }
 }
 
 extension AuthRepositoryImp : RequestExecutor {}
-
-struct AuthRepositoryMock : AuthRepository, BaseRepositoryMock {
-    func onLogin(data: Data) -> AnyPublisher<Base<Login>, Error> {
-        execute(AuthApi.login(data: data))
-    }
-}
-
-extension AuthRepositoryMock : RequestExecutor {}
-

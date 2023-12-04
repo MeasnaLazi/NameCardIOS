@@ -9,7 +9,7 @@ import Foundation
 
 class HomeViewModel : BaseViewModel, ObservableObject {
     
-    private let _nameCardRepository = NameCardRepositoryImp()
+    private let _nameCardRepository = NameCardRepositoryImp(type: .api)
     
     @Published private(set) var state: ViewState = .initial
     @Published private(set) var cards: [Card] = []

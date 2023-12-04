@@ -13,6 +13,9 @@ protocol NameCardRepository {
 }
 
 struct NameCardRepositoryImp : NameCardRepository, BaseRepository {
+    
+    var type: RepositoryType = .api
+    
     func getAll() -> AnyPublisher<Base<[Card]>, Error> {
         execute(NameCardApi.all)
     }

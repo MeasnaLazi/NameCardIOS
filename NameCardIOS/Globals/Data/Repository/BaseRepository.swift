@@ -9,11 +9,24 @@ import Foundation
 import Combine
 
 private let _apiClient = APIClient()
+private let _apiClientMock = APIClientMock()
 
-protocol BaseRepository {}
+protocol BaseRepository {
+    var type: RepositoryType { set get }
+}
+
+enum RepositoryType {
+    case api
+    case mock
+}
 
 extension BaseRepository where Self : RequestExecutor {
     func execute<T>(_ request: Requestable) -> AnyPublisher<T, Error> where T : Responable {
-        return _apiClient.execute(request)
+        switch self.type {
+        case .api:
+            return _apiClient.execute(request)
+        case .mock:
+            return _apiClientMock.execute(request)
+        }
     }
 }
