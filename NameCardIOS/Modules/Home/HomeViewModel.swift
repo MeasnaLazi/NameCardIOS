@@ -9,7 +9,7 @@ import Foundation
 
 class HomeViewModel : BaseViewModel, ObservableObject {
     
-    private let _nameCardRepository = NameCardRepositoryImp(type: .api)
+    private let _nameCardRepository = NameCardRepositoryImp(type: .mock)
     
     @Published private(set) var state: ViewState = .initial
     @Published private(set) var cards: [Card] = []
@@ -33,6 +33,7 @@ class HomeViewModel : BaseViewModel, ObservableObject {
             }
         } receiveValue: {[weak self] response in
             self?.cards = response.data ?? []
+            self?.state = .fetched
         }
         .store(in: &disposable)
 

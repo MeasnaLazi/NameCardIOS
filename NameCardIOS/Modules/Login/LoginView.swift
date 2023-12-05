@@ -15,6 +15,7 @@ struct LoginView : View {
     
     @State private var _username: String = ""
     @State private var _password: String = ""
+    @State private var _moveToHomeScreen: Bool = false
     
     private func onLoginClick() {
         guard !_username.isEmpty else {
@@ -43,6 +44,9 @@ struct LoginView : View {
             case .fetched:
                 Text("").onAppear() {
                     token = _viewModel.login?.token ?? ""
+                    if !token.isEmpty {
+                        _moveToHomeScreen = true
+                    }
                 }
             case .fail:
                 Text("")
@@ -62,6 +66,10 @@ struct LoginView : View {
         
                 Spacer()
             }
+            
+            HStack {}
+                .background(EmptyView())
+                .fullScreenCover(isPresented: $_moveToHomeScreen, content: { HomeView() })
         }
         .safeAreaPadding(.horizontal, 20)
     }

@@ -17,6 +17,7 @@ struct ItemCardView : View {
         GeometryReader { proxy in
             let rect = proxy.frame(in: .named("SCROLL"))
             let offset = CGFloat(index * (isExpand ? 10 : 70))
+            let shadowOffset = 5.0
             
             ZStack(alignment: .bottomLeading) {
                 AsyncImage(url: URL(string: card.image.toFullPath())) { image in
@@ -31,7 +32,7 @@ struct ItemCardView : View {
                         .shadow(color: .shadow, radius: 5)
                 }
             }
-            .offset(y: isExpand ? offset : -rect.minY + offset )
+            .offset(y: isExpand ? offset : -rect.minY + offset + shadowOffset )
         }
         .frame(height: 200)
     }

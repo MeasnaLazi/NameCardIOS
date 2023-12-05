@@ -13,7 +13,7 @@ extension NameCardApi {
     var jsonFileName: String?  {
         switch self {
         case .all:
-            return "login"
+            return "home"
         }
     }
     

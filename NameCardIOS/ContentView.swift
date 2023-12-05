@@ -9,15 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @AppStorage("token") private var token = ""
-    
     var body: some View {
         Group {
-            if token.isEmpty {
-                LoginView()
-            } else {
-                HomeView()
-            }
+            // LoginView()
+            HomeView()
         }
      
     }

@@ -21,7 +21,6 @@ struct APIClient {
                                 return Fail(error: NSError(domain: "", code: 0, userInfo: [:])).eraseToAnyPublisher()
                             })
                             .tryMap {
-                                print("typeOf: \(type(of: $0))")
                                 let status = ($0.response as! HTTPURLResponse).statusCode
                                 if (status != 200) {
                                     throw NSError(domain: "", code: status, userInfo: [:])

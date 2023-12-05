@@ -19,7 +19,5 @@ extension Text {
     
     func titleLabelStyle() -> some View {
         self.font(.primary(.bold, size: 24))
-            .padding(.horizontal, 15)
-            .padding(.bottom, 10)
     }
 }
