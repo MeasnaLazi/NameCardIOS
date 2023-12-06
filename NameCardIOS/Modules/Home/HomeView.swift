@@ -89,7 +89,13 @@ struct HomeView : View {
                     createButton
                 }
             }
-            .navigationBarItems(leading: Text("CARDS").titleLabelStyle())
+            .navigationBarItems(leading: Text("CARDS").titleLabelStyle(), trailing: HStack { 
+                Text("Lazi")
+                    .font(.primary(.regular))
+                    .foregroundColor(.text)
+                Image(systemName: "person.crop.circle")
+                    .foregroundColor(.primary)
+            })
         }
         .searchable(text: $_searchText, isPresented: $isExpand)
     }
