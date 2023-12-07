@@ -89,13 +89,7 @@ struct HomeView : View {
                     createButton
                 }
             }
-            .navigationBarItems(leading: Text("CARDS").titleLabelStyle(), trailing: HStack { 
-                Text("Lazi")
-                    .font(.primary(.regular))
-                    .foregroundColor(.text)
-                Image(systemName: "person.crop.circle")
-                    .foregroundColor(.primary)
-            })
+            .navigationBarItems(leading: Text("CARDS").titleLabelStyle(), trailing: profileMenu)
         }
         .searchable(text: $_searchText, isPresented: $isExpand)
     }
@@ -145,6 +139,51 @@ struct HomeView : View {
         .opacity(!isExpand ? 1 : 0)
         .frame(height: isExpand ? 0 : nil)
         .padding()
+    }
+    
+    private var profileMenu : some View {
+        Menu {
+            Button {
+                
+            } label: {
+                createMenuItem(label: "My Code", icon: "qrcode")
+            }
+            
+            Divider()
+            
+            Button {
+                
+            } label: {
+                createMenuItem(label: "Profile", icon: "person")
+            }
+            Button {
+                
+            } label: {
+                createMenuItem(label: "Setting", icon: "gearshape")
+            }
+        
+            Divider()
+            
+            Button(role: .destructive) {
+                
+            } label: {
+                createMenuItem(label: "Logout", icon: "rectangle.portrait.and.arrow.right")
+            }
+
+        } label: {
+            createMenuItem(label: "Lazi", icon: "person.crop.circle")
+        }
+        
+    }
+    
+    private func createMenuItem(label: String, icon: String) -> some View {
+        return HStack {
+            Text(label)
+                .font(.primary(.regular))
+                .foregroundColor(.text)
+            Image(systemName: icon)
+                .foregroundColor(.primary)
+        }
     }
 }
 
