@@ -9,7 +9,7 @@ import Foundation
 
 enum NameCardApi : Requestable {
     var requestURL: URL {
-        return URL(string: "\(Const().BASE_URL)/name-card")!
+        return URL(string: "\(Const().BASE_URL)/name-cards")!
     }
     
     var path: String? {
@@ -18,7 +18,7 @@ enum NameCardApi : Requestable {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .all:
+        case .name_cards:
             return .get
         }
     }
@@ -42,6 +42,6 @@ enum NameCardApi : Requestable {
         return nil
     }
         
-    case all
+    case name_cards
     
 }

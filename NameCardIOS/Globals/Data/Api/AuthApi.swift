@@ -9,7 +9,7 @@ import Foundation
 
 enum AuthApi : Requestable {
     var requestURL: URL {
-        return URL(string: "\(Const().BASE_URL)/account")!
+        return URL(string: "\(Const().BASE_URL)/accounts")!
     }
     
     var path: String? {

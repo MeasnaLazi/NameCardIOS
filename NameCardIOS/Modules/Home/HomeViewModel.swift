@@ -13,6 +13,7 @@ class HomeViewModel : BaseViewModel, ObservableObject {
     
     @Published private(set) var state: ViewState = .initial
     @Published private(set) var cards: [Card] = []
+    @Published private(set) var searchCards: [Card] = []
     
     func onViewAppear() {
         getAllNameCard()
@@ -20,7 +21,8 @@ class HomeViewModel : BaseViewModel, ObservableObject {
     
     private func getAllNameCard() {
         state = .loading
-        _nameCardRepository.getAll()
+        _nameCardRepository.getNameCards()
+//            .debounce(for: 2, scheduler: RunLoop.main) // for search
             .receive(on: RunLoop.main)
             .sink { [weak self] completion in
                 switch (completion) {

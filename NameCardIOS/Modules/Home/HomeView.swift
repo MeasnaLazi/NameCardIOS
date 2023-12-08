@@ -67,6 +67,7 @@ struct HomeView : View {
                                     }
                                 }
                                 .padding([.horizontal, .top])
+                                .padding(.bottom, isExpand ? 130 : 0)
                             }
                             .coordinateSpace(name: "SCROLL")
                         }
@@ -92,6 +93,9 @@ struct HomeView : View {
             .navigationBarItems(leading: Text("CARDS").titleLabelStyle(), trailing: profileMenu)
         }
         .searchable(text: $_searchText, isPresented: $isExpand)
+        .onChange(of: _searchText) { oldValue, newValue in
+            
+        }
     }
     
     

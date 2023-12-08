@@ -18,7 +18,7 @@
 		55220D812B1C13D700840F71 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55220D802B1C13D700840F71 /* MockAPIClient.swift */; };
 		552C81A22B13AACA00E38B0B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C81A12B13AACA00E38B0B /* Card.swift */; };
 		552F41522B1819D50092146B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F41512B1819D50092146B /* LoadingView.swift */; };
-		556E845B2B1EB66E000E915B /* home.json in Resources */ = {isa = PBXBuildFile; fileRef = 556E845A2B1EB66E000E915B /* home.json */; };
+		556E845B2B1EB66E000E915B /* name_cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 556E845A2B1EB66E000E915B /* name_cards.json */; };
 		556F7CB12B15724A001FC880 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F7CB02B15724A001FC880 /* HomeView.swift */; };
 		556F7CB32B1572D1001FC880 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 556F7CB22B1572D1001FC880 /* SF-Pro-Text-Regular.otf */; };
 		556F7CB72B1572E2001FC880 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 556F7CB62B1572E1001FC880 /* SF-Pro-Text-Medium.otf */; };
@@ -87,7 +87,7 @@
 		55220D802B1C13D700840F71 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
 		552C81A12B13AACA00E38B0B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		552F41512B1819D50092146B /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		556E845A2B1EB66E000E915B /* home.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = home.json; sourceTree = "<group>"; };
+		556E845A2B1EB66E000E915B /* name_cards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = name_cards.json; sourceTree = "<group>"; };
 		556F7CB02B15724A001FC880 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		556F7CB22B1572D1001FC880 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		556F7CB62B1572E1001FC880 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				55220D7D2B1C11CB00840F71 /* login.json */,
-				556E845A2B1EB66E000E915B /* home.json */,
+				556E845A2B1EB66E000E915B /* name_cards.json */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -508,7 +508,7 @@
 				5598F4362B1101000063E864 /* Assets.xcassets in Resources */,
 				55220D7E2B1C11CB00840F71 /* login.json in Resources */,
 				556F7CB72B1572E2001FC880 /* SF-Pro-Text-Medium.otf in Resources */,
-				556E845B2B1EB66E000E915B /* home.json in Resources */,
+				556E845B2B1EB66E000E915B /* name_cards.json in Resources */,
 				556F7CB32B1572D1001FC880 /* SF-Pro-Text-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

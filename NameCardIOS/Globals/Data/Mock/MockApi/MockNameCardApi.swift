@@ -12,8 +12,8 @@ extension NameCardApi {
     
     var jsonFileName: String?  {
         switch self {
-        case .all:
-            return "home"
+        case .name_cards:
+            return "name_cards"
         }
     }
     
