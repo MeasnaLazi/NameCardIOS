@@ -9,16 +9,18 @@ import Foundation
 import Combine
 
 protocol NameCardRepository {
-    func getNameCards() -> AnyPublisher<Base<[Card]>, Error>
+    func getNameCards() -> AnyPublisher<BasePagination<[Card]>, Error>
 }
 
 struct NameCardRepositoryImp : NameCardRepository, BaseRepository {
     
-    var type: RepositoryType = .api
+    var requestExecutor: RequestExecutor
     
-    func getNameCards() -> AnyPublisher<Base<[Card]>, Error> {
+    init(requestExecute: RequestExecutor) {
+        self.requestExecutor = requestExecute
+    }
+    
+    func getNameCards() -> AnyPublisher<BasePagination<[Card]>, Error> {
         execute(NameCardApi.name_cards)
     }
 }
-
-extension NameCardRepositoryImp : RequestExecutor {}

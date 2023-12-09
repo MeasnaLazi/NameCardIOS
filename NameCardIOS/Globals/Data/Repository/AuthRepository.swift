@@ -14,11 +14,13 @@ protocol AuthRepository {
 
 struct AuthRepositoryImp : AuthRepository, BaseRepository {
     
-    var type: RepositoryType = .api
+    var requestExecutor: RequestExecutor
+    
+    init(requestExecute: RequestExecutor) {
+        self.requestExecutor = requestExecute
+    }
     
     func onLogin(data: Data) -> AnyPublisher<Base<Login>, Error> {
         execute(AuthApi.login(data: data))
     }
 }
-
-extension AuthRepositoryImp : RequestExecutor {}

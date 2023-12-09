@@ -17,8 +17,12 @@ class LoginViewModel : BaseViewModel, ObservableObject {
     
     @Published private(set) var login: Login?
     
-    init(repository: AuthRepository) {
-        self._repository = repository
+    override init() {
+        self._repository = AuthRepositoryImp(requestExecute: APIClient())
+    }
+    
+    init(requestExecute: RequestExecutor) {
+        self._repository = AuthRepositoryImp(requestExecute: requestExecute)
     }
     
     private func onLogin(data: Data) {

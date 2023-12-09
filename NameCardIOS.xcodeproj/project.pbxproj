@@ -14,6 +14,7 @@
 		5511D52D2B1254B5000ADA01 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511D52C2B1254B5000ADA01 /* Text+Extension.swift */; };
 		5511D52F2B1255F0000ADA01 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511D52E2B1255F0000ADA01 /* View+Extension.swift */; };
 		5511D5312B12823E000ADA01 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511D5302B12823E000ADA01 /* LoginViewModelTests.swift */; };
+		551D2CF42B23F0310001C342 /* BasePagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D2CF32B23F0310001C342 /* BasePagination.swift */; };
 		55220D7E2B1C11CB00840F71 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 55220D7D2B1C11CB00840F71 /* login.json */; };
 		55220D812B1C13D700840F71 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55220D802B1C13D700840F71 /* MockAPIClient.swift */; };
 		552C81A22B13AACA00E38B0B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C81A12B13AACA00E38B0B /* Card.swift */; };
@@ -83,6 +84,7 @@
 		5511D52C2B1254B5000ADA01 /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
 		5511D52E2B1255F0000ADA01 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		5511D5302B12823E000ADA01 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		551D2CF32B23F0310001C342 /* BasePagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePagination.swift; sourceTree = "<group>"; };
 		55220D7D2B1C11CB00840F71 /* login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
 		55220D802B1C13D700840F71 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
 		552C81A12B13AACA00E38B0B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				558946DC2B113B3000AFB838 /* Base.swift */,
 				558946DE2B113BD300AFB838 /* Login.swift */,
 				552C81A12B13AACA00E38B0B /* Card.swift */,
+				551D2CF32B23F0310001C342 /* BasePagination.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				558946DD2B113B3000AFB838 /* Base.swift in Sources */,
 				556F7CBC2B1573E7001FC880 /* ItemCardView.swift in Sources */,
 				55A82EDC2B16D835001C3F91 /* NameCardRepository.swift in Sources */,
+				551D2CF42B23F0310001C342 /* BasePagination.swift in Sources */,
 				558946D12B11321F00AFB838 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-struct APIClient {
+struct APIClient : RequestExecutor {
     private let _defaultSession = URLSession(configuration: .default)
     var timeout : TimeInterval?
     var requestHeader : [String : String]? = ["Connection" : "Keep-Alive"]

@@ -9,11 +9,19 @@ import Foundation
 
 class HomeViewModel : BaseViewModel, ObservableObject {
     
-    private let _nameCardRepository = NameCardRepositoryImp(type: .mock)
+    private let _nameCardRepository: NameCardRepository
     
     @Published private(set) var state: ViewState = .initial
     @Published private(set) var cards: [Card] = []
     @Published private(set) var searchCards: [Card] = []
+    
+    override init() {
+        self._nameCardRepository = NameCardRepositoryImp(requestExecute: APIClient())
+    }
+    
+    init(requestExecutor: RequestExecutor) {
+        self._nameCardRepository = NameCardRepositoryImp(requestExecute: requestExecutor)
+    }
     
     func onViewAppear() {
         getAllNameCard()

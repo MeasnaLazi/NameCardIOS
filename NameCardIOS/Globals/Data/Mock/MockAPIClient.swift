@@ -11,7 +11,7 @@ import Combine
 import Foundation
 import Combine
 
-struct MockAPIClient {
+struct MockAPIClient : RequestExecutor {
     func execute<T>(_ request: Requestable) -> AnyPublisher<T, Error> where T : Responable {        
         return request.processLogicMockServer(request)
     }

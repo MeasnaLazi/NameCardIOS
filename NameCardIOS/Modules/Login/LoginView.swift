@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LoginView : View {
     
-    @ObservedObject private var _viewModel = LoginViewModel(repository: AuthRepositoryImp(type: .api))
+    @ObservedObject private var _viewModel = LoginViewModel()
     @AppStorage("token") private var token = ""
     
     @State private var _username: String = ""
