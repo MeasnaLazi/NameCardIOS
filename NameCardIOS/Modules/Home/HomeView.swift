@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
+import Combine
 
 struct HomeView : View {
 
     @ObservedObject private var _viewModel = HomeViewModel()
-    @State var isExpand: Bool = false
-    @State var currentCard: Card!
-    @State var isShowDetail: Bool = false
-    
-    @State private var _searchText = ""
+    @State private var _currentCard: Card!
+    @State private var _isShowDetail: Bool = false
+    @State private var _isExpand: Bool = false
     @State private var _isSearchMode = false
+    @State private var _searchText = ""
+    @State private var _page: Int = 1
+    @State private var _timerCancellable: AnyCancellable?
     
     @Namespace var animation
 
@@ -31,15 +33,28 @@ struct HomeView : View {
     
     private func onInvisibleOverlayViewClick() {
         withAnimation(.easeOut(duration: 0.35)) {
-            isExpand = true
+            _isExpand = true
         }
     }
     
     private func onItemCardViewClick(card: Card) {
         withAnimation(.easeInOut(duration: 0.35)) {
-            currentCard = card
-            isShowDetail = true
+            _currentCard = card
+            _isShowDetail = true
         }
+    }
+    
+    private func _startTimerSearch() {
+        if let timerCancellable = _timerCancellable {
+            timerCancellable.cancel()
+        }
+        
+        _timerCancellable = Timer.publish(every: 1, on: .main, in: .common)
+            .autoconnect()
+            .sink { _ in
+                self._viewModel.onSearch(search: self._searchText, page: self._page)
+                _timerCancellable?.cancel()
+            }
     }
     
     var body: some View {
@@ -67,7 +82,7 @@ struct HomeView : View {
                                     }
                                 }
                                 .padding([.horizontal, .top])
-                                .padding(.bottom, isExpand ? 130 : 0)
+                                .padding(.bottom, _isExpand ? 130 : 0)
                             }
                             .coordinateSpace(name: "SCROLL")
                         }
@@ -77,10 +92,10 @@ struct HomeView : View {
                     }
                     .padding([.horizontal, .top])
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .opacity(isShowDetail ? 0 : 1)
+                    .opacity(_isShowDetail ? 0 : 1)
                     .overlay {
-                        if let currentCard = currentCard, isShowDetail {
-                            DetailView(card: currentCard, animation: animation, showDetailCard: $isShowDetail)
+                        if let currentCard = _currentCard, _isShowDetail {
+                            DetailView(card: currentCard, animation: animation, showDetailCard: $_isShowDetail)
                         }
                     }
                     .onAppear() {
@@ -92,9 +107,19 @@ struct HomeView : View {
             }
             .navigationBarItems(leading: Text("CARDS").titleLabelStyle(), trailing: profileMenu)
         }
-        .searchable(text: $_searchText, isPresented: $isExpand)
+        .searchable(text: $_searchText, isPresented: $_isExpand)
+        .onChange(of: _isExpand, { oldValue, newValue in
+            if !_isExpand {
+                self._page = 1
+                self._searchText = ""
+                self._viewModel.onSearchClose()
+            }
+        })
         .onChange(of: _searchText) { oldValue, newValue in
-            
+            if newValue.isEmpty {
+                self._page = 1
+            }
+            self._startTimerSearch()
         }
     }
     
@@ -102,11 +127,11 @@ struct HomeView : View {
     @ViewBuilder
     private func itemCardView(card:Card) -> some View {
         Group {
-            if currentCard?.id == card.id && isShowDetail {
-                ItemCardView(index: getIndex(card: card), card: card, isExpand: $isExpand)
+            if _currentCard?.id == card.id && _isShowDetail {
+                ItemCardView(index: getIndex(card: card), card: card, isExpand: $_isExpand)
                     .opacity(0)
             } else {
-                ItemCardView(index: getIndex(card: card), card: card, isExpand: $isExpand)
+                ItemCardView(index: getIndex(card: card), card: card, isExpand: $_isExpand)
                     .matchedGeometryEffect(id: card.id, in: animation)
             }
         }
@@ -117,7 +142,7 @@ struct HomeView : View {
     
     private var invisibleOverlayView : some View {
         Rectangle()
-            .fill(.black.opacity(isExpand ? 0 : 0.01))
+            .fill(.black.opacity(_isExpand ? 0 : 0.01))
             .onTapGesture {
                 onInvisibleOverlayViewClick()
             }
@@ -138,10 +163,10 @@ struct HomeView : View {
                 .shadow(color: .shadow, radius: 5, x: 0, y: 5)
             
         }
-        .rotationEffect(.init(degrees: isExpand ? 180 : 0))
-        .scaleEffect(isExpand ? 0.01 : 1)
-        .opacity(!isExpand ? 1 : 0)
-        .frame(height: isExpand ? 0 : nil)
+        .rotationEffect(.init(degrees: _isExpand ? 180 : 0))
+        .scaleEffect(_isExpand ? 0.01 : 1)
+        .opacity(!_isExpand ? 1 : 0)
+        .frame(height: _isExpand ? 0 : nil)
         .padding()
     }
     

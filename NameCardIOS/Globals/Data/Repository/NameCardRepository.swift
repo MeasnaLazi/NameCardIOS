@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol NameCardRepository {
-    func getNameCards() -> AnyPublisher<BasePagination<[Card]>, Error>
+    func getNameCards(search: String, page: Int) -> AnyPublisher<BasePagination<[Card]>, Error>
 }
 
 struct NameCardRepositoryImp : NameCardRepository, BaseRepository {
@@ -20,7 +20,7 @@ struct NameCardRepositoryImp : NameCardRepository, BaseRepository {
         self.requestExecutor = requestExecute
     }
     
-    func getNameCards() -> AnyPublisher<BasePagination<[Card]>, Error> {
-        execute(NameCardApi.name_cards)
+    func getNameCards(search: String, page: Int) -> AnyPublisher<BasePagination<[Card]>, Error> {
+        execute(NameCardApi.name_cards(search: search, page: page))
     }
 }

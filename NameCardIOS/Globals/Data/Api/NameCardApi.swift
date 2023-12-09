@@ -35,13 +35,16 @@ enum NameCardApi : Requestable {
     }
     
     var paramater: Paramater? {
-        return nil
+        switch self {
+        case.name_cards(let search, let page):
+            return .query(["search" : search, "page": String(page)])
+        }
     }
     
     var timeout: TimeInterval? {
         return nil
     }
         
-    case name_cards
+    case name_cards(search: String, page: Int)
     
 }

@@ -29,6 +29,5 @@ struct BasePagination<T : Decodable> : Decodable, Responable {
         data = try container.decodeIfPresent(T.self, forKey: .data)
         count = try container.decode(Int.self, forKey: .count)
         totalPage = try container.decode(Int.self, forKey: .totalPage)
-        
     }
 }
