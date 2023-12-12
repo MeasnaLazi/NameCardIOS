@@ -19,7 +19,7 @@ class HomeViewModel : BaseViewModel, ObservableObject {
     @Published private(set) var count: Int = 0
     
     override init() {
-        self._nameCardRepository = NameCardRepositoryImp(requestExecute: APIClient())
+        self._nameCardRepository = NameCardRepositoryImp(requestExecute: MockAPIClient())
     }
     
     init(requestExecutor: RequestExecutor) {

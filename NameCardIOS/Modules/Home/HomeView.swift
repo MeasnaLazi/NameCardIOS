@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import VisionKit
 
 struct HomeView : View {
 
@@ -19,6 +20,8 @@ struct HomeView : View {
     @State private var _searchText = ""
     @State private var _page: Int = 1
     @State private var _timerCancellable: AnyCancellable?
+    
+    @State private var _isOpenCamera = false
     
     @Namespace var animation
 
@@ -112,6 +115,14 @@ struct HomeView : View {
             }
             .navigationBarItems(leading: Text("Wallet").titleLabelStyle(), trailing: profileMenu)
             .toolbar(_isShowDetail ? .hidden : .visible, for: .navigationBar)
+            .fullScreenCover(isPresented: $_isOpenCamera) {
+                DocumentCameraView(
+                    resultAction: { scan in
+                        
+                    }, cancelAction: {
+                        
+                    })
+            }
         }
        
         .searchable(text: $_searchText, isPresented: $_isSearch)
@@ -162,7 +173,7 @@ struct HomeView : View {
         
         Button {
             // TODO
-            
+            _isOpenCamera = true
         } label: {
             Image(systemName: "rectangle.badge.plus")
                 .font(.system(size: 20))
@@ -227,5 +238,4 @@ struct HomeView : View {
         }
     }
 }
-
 

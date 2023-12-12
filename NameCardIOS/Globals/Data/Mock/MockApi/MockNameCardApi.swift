@@ -27,6 +27,7 @@ extension NameCardApi {
             .tryMap {
                 return try T.decode($0)
             }
+
             .mapError { error in
                 return error
             }
