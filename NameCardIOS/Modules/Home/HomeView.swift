@@ -14,6 +14,7 @@ struct HomeView : View {
     @State private var _currentCard: Card!
     @State private var _isShowDetail: Bool = false
     @State private var _isExpand: Bool = false
+    @State private var _isSearch: Bool = false
     @State private var _isSearchMode = false
     @State private var _searchText = ""
     @State private var _page: Int = 1
@@ -34,6 +35,7 @@ struct HomeView : View {
     private func onInvisibleOverlayViewClick() {
         withAnimation(.easeOut(duration: 0.35)) {
             _isExpand = true
+            _isSearch = true
         }
     }
     
@@ -96,6 +98,9 @@ struct HomeView : View {
                     .overlay {
                         if let currentCard = _currentCard, _isShowDetail {
                             DetailView(card: currentCard, animation: animation, showDetailCard: $_isShowDetail)
+                                .onDisappear() {
+                                    _isSearch = true
+                                }
                         }
                     }
                     .onAppear() {
@@ -105,14 +110,19 @@ struct HomeView : View {
                     createButton
                 }
             }
-            .navigationBarItems(leading: Text("CARDS").titleLabelStyle(), trailing: profileMenu)
+            .navigationBarItems(leading: Text("Wallet").titleLabelStyle(), trailing: profileMenu)
+            .toolbar(_isShowDetail ? .hidden : .visible, for: .navigationBar)
         }
-        .searchable(text: $_searchText, isPresented: $_isExpand)
-        .onChange(of: _isExpand, { oldValue, newValue in
-            if !_isExpand {
+       
+        .searchable(text: $_searchText, isPresented: $_isSearch)
+        .onChange(of: _isSearch, { oldValue, newValue in
+            if !newValue {
                 self._page = 1
                 self._searchText = ""
                 self._viewModel.onSearchClose()
+            }
+            if !_isShowDetail {
+                self._isExpand = newValue
             }
         })
         .onChange(of: _searchText) { oldValue, newValue in
@@ -154,7 +164,7 @@ struct HomeView : View {
             // TODO
             
         } label: {
-            Image(systemName: "plus")
+            Image(systemName: "rectangle.badge.plus")
                 .font(.system(size: 20))
                 .padding(18)
                 .foregroundColor(.white)
@@ -197,12 +207,14 @@ struct HomeView : View {
                 
             } label: {
                 createMenuItem(label: "Logout", icon: "rectangle.portrait.and.arrow.right")
+                    .onTapGesture {
+                        
+                    }
             }
 
         } label: {
             createMenuItem(label: "Lazi", icon: "person.crop.circle")
         }
-        
     }
     
     private func createMenuItem(label: String, icon: String) -> some View {

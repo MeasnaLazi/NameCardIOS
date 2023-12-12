@@ -35,59 +35,63 @@ struct DetailView : View {
     }
     
     var body: some View {
-        VStack {
-            cardView
-                .matchedGeometryEffect(id: card.id, in: animation)
-                .frame(height: 200)
-                .zIndex(10)
-                .onTapGesture {
-                    onCardViewClick()
-                }
-                
-            GeometryReader { proxy in
-                let height = proxy.size.height + 50
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: 14) {
-                        ItemDetailView(label: "First Name", text: card.firstname, icon: "person.circle", actionOpen: .none)
-                        Divider()
-                        
-                        if let lastname = card.lastname {
-                            ItemDetailView(label: "Last Name", text: lastname, icon: "person.circle", actionOpen: .none)
-                            Divider()
-                        }
-                        ItemDetailView(label: "Position", text: card.position, icon: "checkmark.circle", actionOpen: .none)
-                        Divider()
-                        ItemDetailView(label: "Phone", text: card.phone, icon: "phone.circle", actionOpen: .phone)
-                        Divider()
-                        ItemDetailView(label: "Email", text: card.email, icon: "envelope.circle", actionOpen: .email)
-                        Divider()
-                        
-                        if let address = card.address {
-                            ItemDetailView(label: "Address", text: address, icon: "location.circle", actionOpen: .map)
-                            Divider()
-                        }
-                        
-                        if let website = card.website {
-                            ItemDetailView(label: "Website", text: website, icon: "link.circle", actionOpen: .website)
-                            Divider()
-                        }
+        NavigationView {
+            VStack {
+                cardView
+                    .matchedGeometryEffect(id: card.id, in: animation)
+                    .frame(height: 200)
+                    .zIndex(10)
+                    .padding(.top, 16)
+                    .onTapGesture {
+                        onCardViewClick()
                     }
-                    .padding()
+                    
+                GeometryReader { proxy in
+                    let height = proxy.size.height + 50
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(spacing: 14) {
+                            ItemDetailView(label: "First Name", text: card.firstname, icon: "person.circle", actionOpen: .none)
+                            Divider()
+                            
+                            if let lastname = card.lastname {
+                                ItemDetailView(label: "Last Name", text: lastname, icon: "person.circle", actionOpen: .none)
+                                Divider()
+                            }
+                            ItemDetailView(label: "Position", text: card.position, icon: "checkmark.circle", actionOpen: .none)
+                            Divider()
+                            ItemDetailView(label: "Phone", text: card.phone, icon: "phone.circle", actionOpen: .phone)
+                            Divider()
+                            ItemDetailView(label: "Email", text: card.email, icon: "envelope.circle", actionOpen: .email)
+                            Divider()
+                            
+                            if let address = card.address {
+                                ItemDetailView(label: "Address", text: address, icon: "location.circle", actionOpen: .map)
+                                Divider()
+                            }
+                            
+                            if let website = card.website {
+                                ItemDetailView(label: "Website", text: website, icon: "link.circle", actionOpen: .website)
+                                Divider()
+                            }
+                        }
+                        .padding()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(Color.white.clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous)))
+                    .offset(y: isShowInfo ? 0 : height)
+                    .padding(.leading, 10)
+                    .padding(.trailing, 10)
                 }
-                .frame(maxWidth: .infinity)
-                .background(Color.white.clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous)))
-                .offset(y: isShowInfo ? 0 : height)
-                .padding(.leading, 10)
-                .padding(.trailing, 10)
+                .padding([.horizontal, .top])
+                .zIndex(-10)
+                .opacity(showInfoOpacity)
             }
-            .padding([.horizontal, .top])
-            .zIndex(-10)
-            .opacity(showInfoOpacity)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .background(Color.bgDefault.ignoresSafeArea())
-        .onAppear() {
-            onViewAppear()
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .background(Color.bgDefault.ignoresSafeArea())
+            .navigationBarItems(leading: Text("Card Detail").titleLabelStyle(), trailing: addMenu)
+            .onAppear() {
+                onViewAppear()
+            }
         }
     }
     
@@ -120,6 +124,21 @@ struct DetailView : View {
                     isShowInfo = false
                 }
             }))
+    }
+    
+    private var addMenu : some View {
+        Button {
+            
+        } label: {
+            HStack {
+                Text("Add to Wallet").font(.primary(.bold))
+                    .foregroundColor(.primary)
+                Image(systemName: "plus.circle")
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+            }
+           
+        }
     }
 }
 
