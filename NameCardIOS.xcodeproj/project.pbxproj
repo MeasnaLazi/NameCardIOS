@@ -20,6 +20,8 @@
 		552C81A22B13AACA00E38B0B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C81A12B13AACA00E38B0B /* Card.swift */; };
 		552F41522B1819D50092146B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F41512B1819D50092146B /* LoadingView.swift */; };
 		553BECCD2B27FFD800EBB932 /* DocumentCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553BECCC2B27FFD800EBB932 /* DocumentCameraView.swift */; };
+		5549CF112B2952D40022D861 /* WeScan in Frameworks */ = {isa = PBXBuildFile; productRef = 5549CF102B2952D40022D861 /* WeScan */; };
+		5549CF132B2952E30022D861 /* WeScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5549CF122B2952E30022D861 /* WeScanView.swift */; };
 		556E845B2B1EB66E000E915B /* name_cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 556E845A2B1EB66E000E915B /* name_cards.json */; };
 		556F7CB12B15724A001FC880 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F7CB02B15724A001FC880 /* HomeView.swift */; };
 		556F7CB32B1572D1001FC880 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 556F7CB22B1572D1001FC880 /* SF-Pro-Text-Regular.otf */; };
@@ -91,6 +93,7 @@
 		552C81A12B13AACA00E38B0B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		552F41512B1819D50092146B /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		553BECCC2B27FFD800EBB932 /* DocumentCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCameraView.swift; sourceTree = "<group>"; };
+		5549CF122B2952E30022D861 /* WeScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeScanView.swift; sourceTree = "<group>"; };
 		556E845A2B1EB66E000E915B /* name_cards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = name_cards.json; sourceTree = "<group>"; };
 		556F7CB02B15724A001FC880 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		556F7CB22B1572D1001FC880 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
@@ -140,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5549CF112B2952D40022D861 /* WeScan in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +207,7 @@
 			children = (
 				556F7CBB2B1573E7001FC880 /* ItemCardView.swift */,
 				553BECCC2B27FFD800EBB932 /* DocumentCameraView.swift */,
+				5549CF122B2952E30022D861 /* WeScanView.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -421,6 +426,9 @@
 			dependencies = (
 			);
 			name = NameCardIOS;
+			packageProductDependencies = (
+				5549CF102B2952D40022D861 /* WeScan */,
+			);
 			productName = NameCardIOS;
 			productReference = 5598F42E2B1100FE0063E864 /* NameCardIOS.app */;
 			productType = "com.apple.product-type.application";
@@ -493,6 +501,9 @@
 				Base,
 			);
 			mainGroup = 5598F4252B1100FE0063E864;
+			packageReferences = (
+				5549CF0F2B2952D40022D861 /* XCRemoteSwiftPackageReference "WeScan" */,
+			);
 			productRefGroup = 5598F42F2B1100FE0063E864 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -571,6 +582,7 @@
 				5598F4322B1100FE0063E864 /* NameCardIOSApp.swift in Sources */,
 				55A82EE02B16D9CF001C3F91 /* ViewState.swift in Sources */,
 				5511D52F2B1255F0000ADA01 /* View+Extension.swift in Sources */,
+				5549CF132B2952E30022D861 /* WeScanView.swift in Sources */,
 				556F7CB12B15724A001FC880 /* HomeView.swift in Sources */,
 				5502B9B72B1D720600C544A2 /* Data+Extension.swift in Sources */,
 				55220D812B1C13D700840F71 /* MockAPIClient.swift in Sources */,
@@ -910,6 +922,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5549CF0F2B2952D40022D861 /* XCRemoteSwiftPackageReference "WeScan" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WeTransfer/WeScan.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5549CF102B2952D40022D861 /* WeScan */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5549CF0F2B2952D40022D861 /* XCRemoteSwiftPackageReference "WeScan" */;
+			productName = WeScan;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5598F4262B1100FE0063E864 /* Project object */;
 }

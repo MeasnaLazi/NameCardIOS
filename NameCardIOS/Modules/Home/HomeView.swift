@@ -116,11 +116,19 @@ struct HomeView : View {
             .navigationBarItems(leading: Text("Wallet").titleLabelStyle(), trailing: profileMenu)
             .toolbar(_isShowDetail ? .hidden : .visible, for: .navigationBar)
             .fullScreenCover(isPresented: $_isOpenCamera) {
-                DocumentCameraView(
-                    resultAction: { scan in
+                WeScanView(
+                    resultAction: { result in
+                        switch (result) {
+                        case .success(let images):
+                            print("images: \(images)")
+                        case .failure(let err):
+                            print("err: \(err)")
+                        }
+                                  
+                        self._isOpenCamera = false
                         
                     }, cancelAction: {
-                        
+                        print("cancel action")
                     })
             }
         }

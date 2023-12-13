@@ -1,17 +1,17 @@
 //
-//  DocumentCamera.swift
+//  WeScanView.swift
 //  NameCardIOS
 //
-//  Created by Measna on 11/12/23.
+//  Created by Measna on 12/12/23.
 //
 
 import Foundation
 import SwiftUI
-import VisionKit
+import WeScan
 
-struct DocumentCameraView : UIViewControllerRepresentable {
+struct WeScanView : UIViewControllerRepresentable  {
     
-    typealias CameraResult = Result<VNDocumentCameraScan, Error>
+    typealias CameraResult = Result<WeScan.ImageScannerResults, Error>
     typealias CancelAction = () -> Void
     typealias ResultAction = (CameraResult) -> Void
     
@@ -28,8 +28,10 @@ struct DocumentCameraView : UIViewControllerRepresentable {
     }
     
     func makeUIViewController(context: Context) -> some UIViewController {
-        let controller = VNDocumentCameraViewController()
-        controller.delegate = context.coordinator
+        let controller = ImageScannerController()
+//        controller.delegate = context.coordinator
+        controller.imageScannerDelegate = context.coordinator
+        
         
         return controller
     }
@@ -38,30 +40,30 @@ struct DocumentCameraView : UIViewControllerRepresentable {
     }
 }
 
-extension DocumentCameraView {
-    class Coordinator: NSObject, VNDocumentCameraViewControllerDelegate {
+extension WeScanView {
+    class Coordinator : NSObject, ImageScannerControllerDelegate {
         
         private let _resultAction: ResultAction
         private let _cancelAction: CancelAction
         
-        init(resultAction: @escaping DocumentCameraView.ResultAction, cancelAction: @escaping DocumentCameraView.CancelAction) {
+        init(resultAction: @escaping WeScanView.ResultAction, cancelAction: @escaping WeScanView.CancelAction) {
             self._resultAction = resultAction
             self._cancelAction = cancelAction
         }
         
-        func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
-            print("DocumentCameraView: cancel")
+        func imageScannerController(_ scanner: WeScan.ImageScannerController, didFinishScanningWithResults results: WeScan.ImageScannerResults) {
+            self._resultAction(.success(results))
+        }
+        
+        func imageScannerControllerDidCancel(_ scanner: WeScan.ImageScannerController) {
             self._cancelAction()
         }
         
-        func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
-            print("DocumentCameraView: fail")
+        func imageScannerController(_ scanner: WeScan.ImageScannerController, didFailWithError error: Error) {
             self._resultAction(.failure(error))
         }
         
-        func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
-            print("DocumentCameraView: finished")
-            self._resultAction(.success(scan))
-        }
+        
     }
+    
 }
