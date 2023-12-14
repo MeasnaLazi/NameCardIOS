@@ -31,7 +31,7 @@ struct WeScanView : UIViewControllerRepresentable  {
         let controller = ImageScannerController()
 //        controller.delegate = context.coordinator
         controller.imageScannerDelegate = context.coordinator
-        
+    
         
         return controller
     }

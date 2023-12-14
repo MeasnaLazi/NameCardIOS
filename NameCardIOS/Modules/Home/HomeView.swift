@@ -22,6 +22,8 @@ struct HomeView : View {
     @State private var _timerCancellable: AnyCancellable?
     
     @State private var _isOpenCamera = false
+    @State private var _isOpenDetectView  = false
+    @State private var _imageDetect: UIImage?
     
     @Namespace var animation
 
@@ -115,21 +117,39 @@ struct HomeView : View {
             }
             .navigationBarItems(leading: Text("Wallet").titleLabelStyle(), trailing: profileMenu)
             .toolbar(_isShowDetail ? .hidden : .visible, for: .navigationBar)
-            .fullScreenCover(isPresented: $_isOpenCamera) {
+            .sheet(isPresented: $_isOpenCamera,onDismiss: {
+                print("images: \(String(describing: _imageDetect?.size))")
+                _isOpenDetectView = true
+            }) {
                 WeScanView(
                     resultAction: { result in
+                        
+                        self._isOpenCamera = false
+                        
                         switch (result) {
-                        case .success(let images):
-                            print("images: \(images)")
+                        case .success(let imageResult):
+                            _imageDetect = imageResult.croppedScan.image
+                        
+                          
+//                            do {
+//                                try _viewModel.getTextFromImage(image: imageResult.croppedScan.image)
+//                            } catch {
+//                                print("err: \(error)")
+//                            }
                         case .failure(let err):
                             print("err: \(err)")
                         }
                                   
-                        self._isOpenCamera = false
+                    
                         
                     }, cancelAction: {
                         print("cancel action")
                     })
+            }
+            .sheet(isPresented: $_isOpenDetectView) {
+   
+                    DetectView(image: $_imageDetect)
+      
             }
         }
        

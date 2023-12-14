@@ -33,6 +33,7 @@ struct ItemCardView : View {
                 }
             }
             .offset(y: isExpand ? offset : -rect.minY + offset + shadowOffset )
+            .position(x: proxy.size.width / 2, y: proxy.size.height / 2)
         }
         .frame(height: 200)
     }
