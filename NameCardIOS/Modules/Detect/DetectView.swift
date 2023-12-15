@@ -10,19 +10,28 @@ import SwiftUI
 
 struct DetectView : View {
     
+    @ObservedObject private var _viewModel = DetectViewModel()
+    
     @Binding var image: UIImage?
     
     var body: some View {
         ZStack {
             
-            if let image = image {
-                Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+            VStack {
+                if let image = image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .onAppear() {
+                            do {
+                                try _viewModel.getTextFromImage(image: image)
+                            } catch {
+                                
+                            }
+                        }
+                }
+                Spacer()
             }
-
-            Text("hiiii")
-                .foregroundColor(.white)
         }
     }
 }

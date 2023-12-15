@@ -12,6 +12,7 @@ import VisionKit
 struct HomeView : View {
 
     @ObservedObject private var _viewModel = HomeViewModel()
+    
     @State private var _currentCard: Card!
     @State private var _isShowDetail: Bool = false
     @State private var _isExpand: Bool = false
@@ -130,26 +131,16 @@ struct HomeView : View {
                         case .success(let imageResult):
                             _imageDetect = imageResult.croppedScan.image
                         
-                          
-//                            do {
-//                                try _viewModel.getTextFromImage(image: imageResult.croppedScan.image)
-//                            } catch {
-//                                print("err: \(error)")
-//                            }
                         case .failure(let err):
                             print("err: \(err)")
                         }
-                                  
-                    
                         
                     }, cancelAction: {
                         print("cancel action")
                     })
             }
             .sheet(isPresented: $_isOpenDetectView) {
-   
-                    DetectView(image: $_imageDetect)
-      
+                DetectView(image: $_imageDetect)
             }
         }
        
@@ -246,9 +237,6 @@ struct HomeView : View {
                 
             } label: {
                 createMenuItem(label: "Logout", icon: "rectangle.portrait.and.arrow.right")
-                    .onTapGesture {
-                        
-                    }
             }
 
         } label: {

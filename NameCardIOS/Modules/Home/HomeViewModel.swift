@@ -7,8 +7,7 @@
 
 import Foundation
 import Combine
-import UIKit
-import Vision
+
 
 class HomeViewModel : BaseViewModel, ObservableObject {
     
@@ -38,42 +37,6 @@ class HomeViewModel : BaseViewModel, ObservableObject {
     
     func onSearchClose() {
         self.cards = self.firstLoadCards
-    }
-    
-    private let queue = DispatchQueue(label: "com.appskhmers.namecard", qos: .default, attributes: [], autoreleaseFrequency: .workItem)
-    
-    func getTextFromImage(image: UIImage) throws {
-        
-        guard let cgImage = image.cgImage else {
-            return
-        }
-        
-        queue.async {[weak self] in
-            
-            let requestHandler = VNImageRequestHandler(cgImage: cgImage)
-            let request = VNRecognizeTextRequest(completionHandler: self?.recognizeTextHandler)
-            request.recognitionLanguages = ["en"]
-            request.recognitionLevel = .accurate
-            request.usesLanguageCorrection = false
-            
-            do {
-                try requestHandler.perform([request])
-            } catch {
-                print("Unable to perform the requests: \(error).")
-            }
-        }
-    }
-    
-    private func recognizeTextHandler(request: VNRequest, error: Error?) {
-        guard let observations = request.results as? [VNRecognizedTextObservation] else {
-            return
-        }
-        
-        let recognizeStrings = observations.compactMap { observation in
-            return observation.topCandidates(1).first?.string
-        }
-        
-        print("recognizeString: \(recognizeStrings)")
     }
     
     private func _getAllNameCard(search: String, page: Int) {
