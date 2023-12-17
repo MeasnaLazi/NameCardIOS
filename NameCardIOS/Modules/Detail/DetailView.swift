@@ -88,7 +88,7 @@ struct DetailView : View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(Color.bgDefault.ignoresSafeArea())
-            .navigationBarItems(leading: Text("Card Detail").titleLabelStyle(), trailing: addMenu)
+            .navigationBarItems(leading: Text("Card Detail").titleLabelStyle())
             .onAppear() {
                 onViewAppear()
             }
@@ -126,20 +126,20 @@ struct DetailView : View {
             }))
     }
     
-    private var addMenu : some View {
-        Button {
-            
-        } label: {
-            HStack {
-                Text("Add to Wallet").font(.primary(.bold))
-                    .foregroundColor(.primary)
-                Image(systemName: "plus.circle")
-                    .fontWeight(.bold)
-                    .foregroundColor(.primary)
-            }
-           
-        }
-    }
+//    private var addMenu : some View {
+//        Button {
+//            
+//        } label: {
+//            HStack {
+//                Text("Add to Wallet").font(.primary(.bold))
+//                    .foregroundColor(.primary)
+//                Image(systemName: "plus.circle")
+//                    .fontWeight(.bold)
+//                    .foregroundColor(.primary)
+//            }
+//           
+//        }
+//    }
 }
 
 struct SwipeToDismissModifier: ViewModifier {

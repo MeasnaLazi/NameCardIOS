@@ -18,9 +18,20 @@ extension NameCardApi {
     }
     
     func processLogicMockServer<T>(_ request: Requestable) -> AnyPublisher<T, Error> where T : Responable {
-        guard let jsonFileName = request.jsonFileName else {
+        guard var jsonFileName = request.jsonFileName else {
             return Fail(error: NSError(domain: "", code: 0, userInfo: [:]))
                         .eraseToAnyPublisher()
+        }
+        
+        var keyword = ""
+        
+        switch self {
+        case.name_cards(let search, _):
+            keyword = search
+        }
+        
+        if !keyword.isEmpty {
+            jsonFileName = "name_cards_search"
         }
         
         return readJSONMockData(fileName: jsonFileName)

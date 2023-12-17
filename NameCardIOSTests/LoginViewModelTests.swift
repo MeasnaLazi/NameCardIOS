@@ -12,12 +12,12 @@ import XCTest
 final class LoginViewModelTests: XCTestCase {
     
     private var _disposables = Set<AnyCancellable>()
-    private var _loginViewModel:LoginViewModel!
+    private var _loginViewModel : LoginViewModel!
     
     
     override func setUp() {
         super.setUp()
-        _loginViewModel = LoginViewModel(repository: AuthRepositoryMock())
+        _loginViewModel = LoginViewModel(requestExecute: MockAPIClient())
     }
     
     override func tearDown() {
@@ -40,7 +40,7 @@ final class LoginViewModelTests: XCTestCase {
             }
         }
         .store(in: &_disposables)
-        wait(for: [expectation], timeout: 3.0)
+        wait(for: [expectation], timeout: 1.0)
     }
     
     func testOnLoginClickWhenLoginFail() {

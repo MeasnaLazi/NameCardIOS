@@ -100,6 +100,7 @@ struct LoginView : View {
             TextField("Username", text: $_username)
                 .primaryTextFieldStyle()
                 .disabled(_viewModel.state == .loading)
+                .accessibilityIdentifier("usernameTextField")
         }
     }
     
@@ -114,6 +115,8 @@ struct LoginView : View {
             SecureField("Password", text: $_password)
                 .primaryTextFieldStyle()
                 .disabled(_viewModel.state == .loading)
+                .accessibilityIdentifier("passwordTextField")
+            
         }
     }
     
@@ -122,6 +125,8 @@ struct LoginView : View {
             Button("Login", action: onLoginClick)
                 .buttonStyle(FullWidthButton())
                 .disabled(_viewModel.state == .loading)
+                .accessibilityIdentifier("loginButton")
+            
     
             HStack {
                 Spacer()
