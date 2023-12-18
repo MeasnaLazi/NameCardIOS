@@ -6,21 +6,18 @@
 //
 
 import XCTest
-import SwiftUI
 
 private let _app = XCUIApplication()
 
 final class LoginViewUITests : XCTestCase {
-    
-//    private var _app: XCUIApplication!
-    
+        
     private let _usernameTextField = _app.textFields["usernameTextField"]
     private let _passwordTextField = _app.secureTextFields["passwordTextField"]
     private let _loginButton = _app.buttons["loginButton"]
     
-    
     override func setUp() {
         continueAfterFailure = false
+        _app.launchArguments.append(Config().testArgument)
         _app.launch()
     }
     

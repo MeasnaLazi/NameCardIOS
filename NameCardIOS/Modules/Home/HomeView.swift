@@ -11,7 +11,7 @@ import VisionKit
 
 struct HomeView : View {
 
-    @ObservedObject private var _viewModel = HomeViewModel()
+    @ObservedObject private var _viewModel = VMFactory.shared.homeViewModel
     
     @State private var _currentCard: Card!
     @State private var _isShowDetail: Bool = false

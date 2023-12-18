@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LoginView : View {
     
-    @ObservedObject private var _viewModel = LoginViewModel()
+    @ObservedObject private var _viewModel = VMFactory.shared.loginViewModel
     @AppStorage("token") private var token = ""
     
     @State private var _username: String = ""
