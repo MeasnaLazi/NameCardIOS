@@ -42,9 +42,6 @@ struct DetailView : View {
                     .frame(height: 200)
                     .zIndex(10)
                     .padding(.top, 16)
-                    .onTapGesture {
-                        onCardViewClick()
-                    }
                     
                 GeometryReader { proxy in
                     let height = proxy.size.height + 50
@@ -108,7 +105,11 @@ struct DetailView : View {
                         .aspectRatio(contentMode: .fit)
                         .shadow(color: .shadow, radius: 5)
                 }
+                .onTapGesture {
+                    onCardViewClick()
+                }
         }
+        .accessibilityIdentifier(card.id)
         .modifier(SwipeToDismissModifier(
             onChange: { height in
                 let h = height - 50

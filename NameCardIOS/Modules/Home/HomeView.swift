@@ -114,6 +114,7 @@ struct HomeView : View {
                     }
 
                     createButton
+                        .accessibilityIdentifier("createButton")
                 }
             }
             .navigationBarItems(leading: Text("Wallet").titleLabelStyle(), trailing: profileMenu)
@@ -166,7 +167,10 @@ struct HomeView : View {
     
     @ViewBuilder
     private func itemCardView(card:Card) -> some View {
-        Group {
+        Button(action: {
+            onItemCardViewClick(card: card)
+        }, label: {
+            Text("") // this for allow whole `itemCardView` visible to XCUITest 🤦‍♂️
             if _currentCard?.id == card.id && _isShowDetail {
                 ItemCardView(index: getIndex(card: card), card: card, isExpand: $_isExpand)
                     .opacity(0)
@@ -174,10 +178,8 @@ struct HomeView : View {
                 ItemCardView(index: getIndex(card: card), card: card, isExpand: $_isExpand)
                     .matchedGeometryEffect(id: card.id, in: animation)
             }
-        }
-        .onTapGesture {
-            onItemCardViewClick(card: card)
-        }
+        })
+        .accessibilityIdentifier(card.id)
     }
     
     private var invisibleOverlayView : some View {

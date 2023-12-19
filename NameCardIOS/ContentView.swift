@@ -11,8 +11,8 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-//            LoginView()
-            HomeView()
+            LoginView()
+//            HomeView()
         }
      
     }
