@@ -30,5 +30,8 @@ Create a digital business card wallet that replaces the physical wallet with man
   <li>...etc</li>
 </ul>
 
+<h5> To Run This Project, You need to run the backend project first then config in `struct Const` in folder `Utils`</h5>
+https://github.com/MeasnaLazi/name-card-backend
+
 
 
