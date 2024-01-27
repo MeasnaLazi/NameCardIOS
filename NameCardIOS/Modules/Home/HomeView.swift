@@ -26,6 +26,8 @@ struct HomeView : View {
     @State private var _isOpenDetectView  = false
     @State private var _imageDetect: UIImage?
     
+    @State private var _isOpenMyQRCode = false
+    
     @Namespace var animation
 
     private func onViewAppear() {
@@ -115,6 +117,10 @@ struct HomeView : View {
 
                     createButton
                         .accessibilityIdentifier("createButton")
+                    
+                    HStack {}.sheet(isPresented: $_isOpenMyQRCode) {
+                        MyQRCodeView()
+                    }
                 }
             }
             .navigationBarItems(leading: Text("Wallet").titleLabelStyle(), trailing: profileMenu)
@@ -215,7 +221,7 @@ struct HomeView : View {
     private var profileMenu : some View {
         Menu {
             Button {
-                
+                self._isOpenMyQRCode = true
             } label: {
                 createMenuItem(label: "My Code", icon: "qrcode")
             }

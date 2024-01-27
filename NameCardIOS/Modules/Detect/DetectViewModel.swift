@@ -11,7 +11,7 @@ import UIKit
 
 class DetectViewModel : BaseViewModel, ObservableObject {
     
-    private let queue = DispatchQueue(label: "com.appskhmers.namecard", qos: .default, attributes: [], autoreleaseFrequency: .workItem)
+    private let queue = DispatchQueue(label: "dev.measna.namecard", qos: .default, attributes: [], autoreleaseFrequency: .workItem)
     private var image: UIImage?
     
     func getTextFromImage(image: UIImage) throws {
