@@ -11,7 +11,7 @@ import SwiftUI
 struct MyQRCodeView : View {
     
     @ObservedObject
-    private var _viewModel: MyQRCodeViewModel = MyQRCodeViewModel()
+    private var _viewModel: MyQRCodeViewModel = VMFactory.shared.myQRCodeViewModel
 
     var body: some View {
         ZStack(alignment: .center) {

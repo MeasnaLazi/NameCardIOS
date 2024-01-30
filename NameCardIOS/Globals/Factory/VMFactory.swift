@@ -18,6 +18,11 @@ class VMFactory {
     var homeViewModel: HomeViewModel {
         isUITesting ? HomeViewModel(requestExecutor: MockAPIClient()) : HomeViewModel()
     }
+    var myQRCodeViewModel: MyQRCodeViewModel {
+        isUITesting ? MyQRCodeViewModel(requestExecute: MockAPIClient()) : MyQRCodeViewModel()
+    }
     
-    private init() {}
+    private init() {
+        print("isUITesting: \(isUITesting)")
+    }
 }

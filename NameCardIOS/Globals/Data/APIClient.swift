@@ -23,6 +23,7 @@ struct APIClient : RequestExecutor {
                             .tryMap {
                                 let status = ($0.response as! HTTPURLResponse).statusCode
                                 if (status != 200) {
+//                                    print("response not 200: \($0.response)")
                                     throw NSError(domain: "", code: status, userInfo: [:])
                                 }
                                 return $0
@@ -66,6 +67,7 @@ struct APIClient : RequestExecutor {
             }
         }
         
+        print("urlRequest:\(urlRequest)")
         return urlRequest
     }
 }

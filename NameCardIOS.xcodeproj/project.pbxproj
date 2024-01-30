@@ -67,6 +67,10 @@
 		55CBF3082B2FD9C200AAA43E /* VMFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CBF3072B2FD9C200AAA43E /* VMFactory.swift */; };
 		55CBF30A2B2FDB8C00AAA43E /* HomeViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CBF3092B2FDB8C00AAA43E /* HomeViewUITests.swift */; };
 		55CBF30C2B2FDBE600AAA43E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CBF30B2B2FDBE600AAA43E /* Config.swift */; };
+		55DCCE4D2B689856000ABEB8 /* ProfileApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DCCE4C2B689856000ABEB8 /* ProfileApi.swift */; };
+		55DCCE4F2B6898A8000ABEB8 /* MockProfileApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DCCE4E2B6898A8000ABEB8 /* MockProfileApi.swift */; };
+		55DCCE512B689914000ABEB8 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DCCE502B689914000ABEB8 /* ProfileRepository.swift */; };
+		55DCCE532B68997C000ABEB8 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DCCE522B68997C000ABEB8 /* Profile.swift */; };
 		55F6745B2B1970600066E6EF /* LoginViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F6745A2B1970600066E6EF /* LoginViewUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -151,6 +155,10 @@
 		55CBF3072B2FD9C200AAA43E /* VMFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMFactory.swift; sourceTree = "<group>"; };
 		55CBF3092B2FDB8C00AAA43E /* HomeViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewUITests.swift; sourceTree = "<group>"; };
 		55CBF30B2B2FDBE600AAA43E /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		55DCCE4C2B689856000ABEB8 /* ProfileApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileApi.swift; sourceTree = "<group>"; };
+		55DCCE4E2B6898A8000ABEB8 /* MockProfileApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProfileApi.swift; sourceTree = "<group>"; };
+		55DCCE502B689914000ABEB8 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
+		55DCCE522B68997C000ABEB8 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		55F6745A2B1970600066E6EF /* LoginViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,6 +193,7 @@
 			children = (
 				5502B9B22B1D70F100C544A2 /* MockAuthApi.swift */,
 				5502B9B42B1D714300C544A2 /* MockNameCardApi.swift */,
+				55DCCE4E2B6898A8000ABEB8 /* MockProfileApi.swift */,
 			);
 			path = MockApi;
 			sourceTree = "<group>";
@@ -250,6 +259,7 @@
 			children = (
 				558946CD2B11306900AFB838 /* AuthApi.swift */,
 				55A82ED92B16D6CA001C3F91 /* NameCardApi.swift */,
+				55DCCE4C2B689856000ABEB8 /* ProfileApi.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -278,6 +288,7 @@
 				558946D52B11391600AFB838 /* BaseRepository.swift */,
 				558946D92B113AC300AFB838 /* AuthRepository.swift */,
 				55A82EDB2B16D835001C3F91 /* NameCardRepository.swift */,
+				55DCCE502B689914000ABEB8 /* ProfileRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -289,6 +300,7 @@
 				558946DE2B113BD300AFB838 /* Login.swift */,
 				552C81A12B13AACA00E38B0B /* Card.swift */,
 				551D2CF32B23F0310001C342 /* BasePagination.swift */,
+				55DCCE522B68997C000ABEB8 /* Profile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -622,12 +634,15 @@
 				558946E32B113EFD00AFB838 /* LoginViewModel.swift in Sources */,
 				558946C82B1109B800AFB838 /* Requestable.swift in Sources */,
 				558946E12B113EA200AFB838 /* BaseViewModel.swift in Sources */,
+				55DCCE512B689914000ABEB8 /* ProfileRepository.swift in Sources */,
 				5598F4342B1100FE0063E864 /* ContentView.swift in Sources */,
 				55A82EDE2B16D986001C3F91 /* HomeViewModel.swift in Sources */,
+				55DCCE532B68997C000ABEB8 /* Profile.swift in Sources */,
 				558946E92B11888200AFB838 /* Button+Style.swift in Sources */,
 				558946CA2B110B1D00AFB838 /* Responable.swift in Sources */,
 				5502B9B02B1D681900C544A2 /* MockServer.swift in Sources */,
 				558946E72B11810A00AFB838 /* Color+Extension.swift in Sources */,
+				55DCCE4F2B6898A8000ABEB8 /* MockProfileApi.swift in Sources */,
 				558946EE2B118A7C00AFB838 /* Font+Extension.swift in Sources */,
 				552C81A22B13AACA00E38B0B /* Card.swift in Sources */,
 				55A82EDA2B16D6CA001C3F91 /* NameCardApi.swift in Sources */,
@@ -636,6 +651,7 @@
 				5511D52F2B1255F0000ADA01 /* View+Extension.swift in Sources */,
 				5549CF132B2952E30022D861 /* WeScanView.swift in Sources */,
 				556F7CB12B15724A001FC880 /* HomeView.swift in Sources */,
+				55DCCE4D2B689856000ABEB8 /* ProfileApi.swift in Sources */,
 				5502B9B72B1D720600C544A2 /* Data+Extension.swift in Sources */,
 				55220D812B1C13D700840F71 /* MockAPIClient.swift in Sources */,
 				558946DD2B113B3000AFB838 /* Base.swift in Sources */,
