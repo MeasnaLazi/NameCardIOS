@@ -10,6 +10,7 @@ import Combine
 
 protocol AuthRepository {
     func onLogin(data: Data) -> AnyPublisher<Base<Login>, Error>
+    func onLoginRefreshToken(data: Data) -> AnyPublisher<Base<Login>, Error>
 }
 
 struct AuthRepositoryImp : AuthRepository, BaseRepository {
@@ -22,5 +23,9 @@ struct AuthRepositoryImp : AuthRepository, BaseRepository {
     
     func onLogin(data: Data) -> AnyPublisher<Base<Login>, Error> {
         execute(AuthApi.login(data: data))
+    }
+    
+    func onLoginRefreshToken(data: Data) -> AnyPublisher<Base<Login>, Error> {
+        execute(AuthApi.loginWithRefreshToken(data: data))
     }
 }

@@ -16,12 +16,16 @@ enum AuthApi : Requestable {
         switch self {
         case .login:
             return "/login"
+        case .loginWithRefreshToken:
+            return "/login-refresh-token"
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
         case .login:
+            return .put
+        case .loginWithRefreshToken:
             return .put
         }
     }
@@ -32,7 +36,9 @@ enum AuthApi : Requestable {
     
     var paramater: Paramater? {
         switch self {
-        case.login(let data):
+        case .login(let data):
+            return .body(data)
+        case .loginWithRefreshToken(let data):
             return .body(data)
         }
     }
@@ -42,5 +48,6 @@ enum AuthApi : Requestable {
     }
     
     case login(data: Data)
+    case loginWithRefreshToken(data: Data)
     
 }

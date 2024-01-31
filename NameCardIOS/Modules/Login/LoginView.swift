@@ -12,6 +12,7 @@ struct LoginView : View {
     
     @ObservedObject private var _viewModel = VMFactory.shared.loginViewModel
     @AppStorage("token") private var token = ""
+    @AppStorage("refreshToken") private var refreshToken = ""
     
     @State private var _username: String = ""
     @State private var _password: String = ""
@@ -44,12 +45,16 @@ struct LoginView : View {
             case .fetched:
                 Text("").onAppear() {
                     token = _viewModel.login?.token ?? ""
-                    if !token.isEmpty {
+                    refreshToken = _viewModel.login?.refreshToken ?? ""
+                    if !token.isEmpty && !refreshToken.isEmpty {
                         _moveToHomeScreen = true
                     }
                 }
             case .fail:
-                Text("")
+                Text("").onAppear() {
+                    token = ""
+                    refreshToken = ""
+                }
             }
         
             VStack {
@@ -65,6 +70,9 @@ struct LoginView : View {
                     .padding(.top, 8)
         
                 Spacer()
+            }
+            .onAppear() {
+                _viewModel.onViewAppear(refreshToken: refreshToken)
             }
             
             HStack {}

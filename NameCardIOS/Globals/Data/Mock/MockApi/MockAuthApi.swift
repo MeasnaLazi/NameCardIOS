@@ -14,6 +14,8 @@ extension AuthApi {
         switch self {
         case .login:
             return "login"
+        case .loginWithRefreshToken:
+            return "login"
         }
     }
     
@@ -37,6 +39,7 @@ extension AuthApi {
             if (username != "lazi" || password != "12345678") {
                 return failError
             }
+        case .loginWithRefreshToken(let data): break
         }
         
         return readJSONMockData(fileName: jsonFileName)

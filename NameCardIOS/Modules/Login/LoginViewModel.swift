@@ -14,7 +14,6 @@ class LoginViewModel : BaseViewModel, ObservableObject {
     
     @Published private(set) var state: ViewState = .initial
     @Published var errorMessage: String = ""
-    
     @Published private(set) var login: Login?
     
     override init() {
@@ -25,7 +24,24 @@ class LoginViewModel : BaseViewModel, ObservableObject {
         self._repository = AuthRepositoryImp(requestExecute: requestExecute)
     }
     
-    private func onLogin(data: Data) {
+    func onViewAppear(refreshToken: String) {
+       _autoLogin(refreshToken)
+    }
+    
+    func onLoginClick(username: String, password: String) {
+        let jsonData = ["username" : username, "password" : password].toJsonData()
+        self._onLogin(data: jsonData)
+    }
+    
+    private func _autoLogin(_ refreshToken: String) {
+        if !refreshToken.isEmpty {
+            let jsonData = ["refresh_token" : refreshToken].toJsonData()
+            self._onLoginWithRefreshToken(data: jsonData)
+        }
+    }
+    
+    private func _onLogin(data: Data) {
+        print("call login")
         state = .loading
         
         _repository.onLogin(data: data)
@@ -47,11 +63,28 @@ class LoginViewModel : BaseViewModel, ObservableObject {
             .store(in: &disposable)
     }
     
-    func onLoginClick(username: String, password: String) {
-        let jsonData = ["username" : username, "password" : password].toJsonData()
-        self.onLogin(data: jsonData)
+    private func _onLoginWithRefreshToken(data: Data) {
+        print("call loginRefreshToken")
+        state = .loading
+        
+        _repository.onLoginRefreshToken(data: data)
+            .receive(on: RunLoop.main)
+            .sink { [weak self] completion in
+                switch completion {
+                case .finished:
+                    print("onLogin Finished")
+                case .failure(let error):
+                    print("error: \(error)")
+                    self?.errorMessage = "Invalid Username or Password!"
+                    self?.state = .fail
+                }
+            } receiveValue: { [weak self] response in
+                self?.errorMessage = ""
+                self?.login = response.data
+                self?.state = .fetched
+            }
+            .store(in: &disposable)
     }
-    
 }
 
 
