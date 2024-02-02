@@ -338,7 +338,6 @@
 		5598F4302B1100FE0063E864 /* NameCardIOS */ = {
 			isa = PBXGroup;
 			children = (
-				558946EF2B118CDF00AFB838 /* Info.plist */,
 				55220D7C2B1C0F1700840F71 /* MockData */,
 				558946EA2B118A2700AFB838 /* Fonts */,
 				5598F45B2B1104570063E864 /* Globals */,
@@ -346,6 +345,7 @@
 				5598F4332B1100FE0063E864 /* ContentView.swift */,
 				5598F4312B1100FE0063E864 /* NameCardIOSApp.swift */,
 				5598F4352B1101000063E864 /* Assets.xcassets */,
+				558946EF2B118CDF00AFB838 /* Info.plist */,
 				5598F4372B1101000063E864 /* Preview Content */,
 			);
 			path = NameCardIOS;
