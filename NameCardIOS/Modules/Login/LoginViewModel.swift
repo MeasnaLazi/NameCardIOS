@@ -41,7 +41,6 @@ class LoginViewModel : BaseViewModel, ObservableObject {
     }
     
     private func _onLogin(data: Data) {
-        print("call login")
         state = .loading
         
         _repository.onLogin(data: data)
@@ -64,7 +63,6 @@ class LoginViewModel : BaseViewModel, ObservableObject {
     }
     
     private func _onLoginWithRefreshToken(data: Data) {
-        print("call loginRefreshToken")
         state = .loading
         
         _repository.onLoginRefreshToken(data: data)

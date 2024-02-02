@@ -75,7 +75,8 @@ struct HomeView : View {
                 case .initial:
                     Text("")
                 case .loading:
-                    LoadingView()
+//                    LoadingView()
+                    Text("")
                 case .fetched:
                     Text("")
                 case .fail:

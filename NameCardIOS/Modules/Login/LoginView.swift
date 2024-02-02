@@ -31,7 +31,7 @@ struct LoginView : View {
             _viewModel.errorMessage = "Invalid Username or Password!"
             return
         }
-
+        
         _viewModel.onLoginClick(username: _username.lowercased(), password: _password)
     }
     
@@ -80,6 +80,11 @@ struct LoginView : View {
                 .fullScreenCover(isPresented: $_moveToHomeScreen, content: { HomeView() })
         }
         .safeAreaPadding(.horizontal, 20)
+        .overlay {
+            if _viewModel.state == .loading {
+                LoadingView()
+            }
+        }
     }
     
     private var logoImageView: some View {
