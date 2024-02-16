@@ -18,6 +18,6 @@ extension Text {
     }
     
     func titleLabelStyle() -> some View {
-        self.font(.primary(.bold, size: 24))
+        self.font(.headline(30))
     }
 }

@@ -10,167 +10,189 @@ import SwiftUI
 struct DetailView : View {
     
     var card: Card
-    var animation: Namespace.ID
-    
-    @Binding var showDetailCard: Bool
-    @State var isShowInfo:Bool = false
-    @State var showInfoOpacity = 1.0
-    
-    
-    private func onViewAppear() {
-        withAnimation(.easeOut.delay(0.1)) {
-            isShowInfo = true
-        }
-    }
-    
-    private func onCardViewClick() {
-        withAnimation(.easeInOut) {
-            isShowInfo = false
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            withAnimation(.easeInOut(duration: 0.35)) {
-                showDetailCard = false
-            }
-        }
-    }
+    @State 
+    private var opacity = 0.0
     
     var body: some View {
-        NavigationView {
-            VStack {
-                cardView
-                    .matchedGeometryEffect(id: card.id, in: animation)
-                    .frame(height: 200)
-                    .zIndex(10)
-                    .padding(.top, 16)
+        VStack(spacing: 0) {
+            imageView
+            
+            ZStack(alignment: .top) {
+                informationView
+                VStack(spacing: 0) {
+                    buttonContainerView
+                        .padding(.leading, 18)
+                        .padding(.trailing, 18)
                     
-                GeometryReader { proxy in
-                    let height = proxy.size.height + 50
-                    ScrollView(.vertical, showsIndicators: false) {
-                        VStack(spacing: 14) {
-                            ItemDetailView(label: "First Name", text: card.firstname, icon: "person.circle", actionOpen: .none)
-                            Divider()
-                            
-                            if let lastname = card.lastname {
-                                ItemDetailView(label: "Last Name", text: lastname, icon: "person.circle", actionOpen: .none)
-                                Divider()
-                            }
-                            ItemDetailView(label: "Position", text: card.position, icon: "checkmark.circle", actionOpen: .none)
-                            Divider()
-                            ItemDetailView(label: "Phone", text: card.phone, icon: "phone.circle", actionOpen: .phone)
-                            Divider()
-                            ItemDetailView(label: "Email", text: card.email, icon: "envelope.circle", actionOpen: .email)
-                            Divider()
-                            
-                            if let address = card.address {
-                                ItemDetailView(label: "Address", text: address, icon: "location.circle", actionOpen: .map)
-                                Divider()
-                            }
-                            
-                            if let website = card.website {
-                                ItemDetailView(label: "Website", text: website, icon: "link.circle", actionOpen: .website)
-                                Divider()
-                            }
-                        }
-                        .padding()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(Color.white.clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous)))
-                    .offset(y: isShowInfo ? 0 : height)
-                    .padding(.leading, 10)
-                    .padding(.trailing, 10)
+                    Rectangle()
+                        .frame(maxWidth: .infinity, maxHeight: 1)
+                        .foregroundColor(.border2)
                 }
-                .padding([.horizontal, .top])
-                .zIndex(-10)
-                .opacity(showInfoOpacity)
+                .opacity(opacity)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-            .background(Color.bgDefault.ignoresSafeArea())
-            .navigationBarItems(leading: Text("Card Detail").titleLabelStyle())
-            .onAppear() {
-                onViewAppear()
-            }
+      
+            
+           
+            
         }
+        .background(Color.white.ignoresSafeArea())
+     
     }
     
-    private var cardView : some View {
+    private var imageView : some View {
         ZStack(alignment: .bottomLeading) {
             AsyncImage(url: URL(string: card.image.toFullPath())) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .shadow(color: .shadow, radius: 5)
-                } placeholder: {
-                    Image("placeholder")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .shadow(color: .shadow, radius: 5)
-                }
-                .onTapGesture {
-                    onCardViewClick()
-                }
+            } placeholder: {
+                Image("placeholder")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
         }
-        .accessibilityIdentifier(card.id)
-        .modifier(SwipeToDismissModifier(
-            onChange: { height in
-                let h = height - 50
-                if (h < 0 ) {
-                    showInfoOpacity = 1
-                } else {
-                    showInfoOpacity = 10 / h
-                }
-            },
-            onDismiss: {
-                withAnimation(.easeInOut) {
-                    showDetailCard = false
-                    isShowInfo = false
-                }
-            }))
     }
     
-//    private var addMenu : some View {
-//        Button {
-//            
-//        } label: {
-//            HStack {
-//                Text("Add to Wallet").font(.primary(.bold))
-//                    .foregroundColor(.primary)
-//                Image(systemName: "plus.circle")
-//                    .fontWeight(.bold)
-//                    .foregroundColor(.primary)
-//            }
-//           
-//        }
-//    }
-}
-
-struct SwipeToDismissModifier: ViewModifier {
-    var onChange: (_ height: Double) -> Void
-    var onDismiss: () -> Void
-    @State private var offset: CGSize = .zero
-
-    func body(content: Content) -> some View {
-        content
-            .offset(y: offset.height)
-            .animation(.interactiveSpring(), value: offset)
-            .simultaneousGesture(
-                DragGesture()
-                    .onChanged { gesture in
-                        onChange(gesture.translation.height)
-                        if gesture.translation.width < 50 {
-                            offset = gesture.translation
-                        }
+    private var informationView : some View {
+        List {
+            buttonContainerView
+                .onDisappear() {
+                    withAnimation {
+                        opacity = 1
                     }
-                    .onEnded { _ in
-                        if abs(offset.height) > 100 {
-                            onDismiss()
-                        } else {
-                            offset = .zero
-                            onChange(49)
-                        }
+                }
+                .onAppear() {
+                    withAnimation {
+                        opacity = 0
                     }
-            )
+                }
+                .padding(.top, -12)
+                .padding(.bottom, -12)
+            
+            Section {
+                ItemDetailView(label: "Position", text: card.position, icon: "circle.circle", actionOpen: .none)
+            }
+            Section {
+                ItemDetailView(label: "First Name", text: card.firstname, icon: "person.circle", actionOpen: .none)
+                
+                if let lastname = card.lastname {
+                    ItemDetailView(label: "Last Name", text: lastname, icon: "person.circle", actionOpen: .none)
+                }
+            }
+            
+            Section {
+                ItemDetailView(label: "Phone", text: card.phone, icon: "phone.circle", actionOpen: .phone)
+           
+                ItemDetailView(label: "Email", text: card.email, icon: "envelope.circle", actionOpen: .email)
+                
+                if let website = card.website {
+                    ItemDetailView(label: "Website", text: website, icon: "link.circle", actionOpen: .website)
+                }
+            }
+                
+            if let address = card.address {
+                Section {
+                    ItemDetailView(label: "Address", text: address, icon: "location.circle", actionOpen: .map)
+                }
+            }
+        }
+        .scrollIndicators(.hidden)
+    }
+    
+    private var buttonContainerView: some View {
+        HStack {
+            actionView(icon: "phone", text: "Call")
+            
+            Spacer()
+            
+            actionView(icon: "envelope", text: "Mail")
+            
+            Spacer()
+            
+            actionView(icon: "phone", text: "Call")
+        }
+        .padding(.top, 12)
+        .padding(.bottom, 12)
+        .background(Color.backgroundTable)
+        .listRowInsets(EdgeInsets())
+        
+    }
+    
+    @ViewBuilder
+    private func actionView(icon: String, text: String) -> some View {
+        VStack {
+            Image(systemName: icon)
+                .foregroundStyle(.white)
+            Text(text)
+                .font(.primary(.regular, size: 12))
+                .foregroundStyle(.white)
+                .padding(.top, 1)
+        }
+        .padding(.top, 6)
+        .padding(.bottom, 6)
+        .frame(maxWidth: .infinity)
+        .background(Color.app)
+        .cornerRadius(5)
     }
 }
+
+struct ItemDetailView : View {
+    
+    var label: String
+    var text: String
+    var icon: String
+    var actionOpen: DetailView.ActionOpen
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Image(systemName: icon)
+                    .font(.system(size: 12))
+                    .foregroundColor(.text)
+                Text(label)
+                    .font(.primary(.regular, size: 12))
+                    .foregroundColor(.text)
+                Spacer()
+            }
+            
+            Text(text)
+                .font(.primary(.medium))
+                .foregroundColor(.text)
+                .padding(.top, 2)
+        }
+    }
+}
+
+
+
+//struct SwipeToDismissModifier: ViewModifier {
+//    var onChange: (_ height: Double) -> Void
+//    var onDismiss: () -> Void
+//    @State private var offset: CGSize = .zero
+//
+//    func body(content: Content) -> some View {
+//        content
+//            .offset(y: offset.height)
+//            .animation(.interactiveSpring(), value: offset)
+//            .simultaneousGesture(
+//                DragGesture()
+//                    .onChanged { gesture in
+//                        onChange(gesture.translation.height)
+//                        if gesture.translation.width < 50 {
+//                            offset = gesture.translation
+//                        }
+//                    }
+//                    .onEnded { _ in
+//                        if abs(offset.height) > 100 {
+//                            onDismiss()
+//                        } else {
+//                            offset = .zero
+//                            onChange(49)
+//                        }
+//                    }
+//            )
+//    }
+//}
 
 extension DetailView {
     enum ActionOpen {

@@ -9,8 +9,6 @@ import SwiftUI
 
 struct HomeView : View {
     
-    @State private var selectedTab = "0"
-    
     init() {
         UITabBar.appearance().backgroundColor = .white
         UITabBar.appearance().unselectedItemTintColor = .unselect
@@ -19,32 +17,27 @@ struct HomeView : View {
     
     var body: some View {
         ZStack {
-            TabView(selection: $selectedTab) {
+            TabView {
                 NameCardView()
                     .tabItem {
                         Label("Card", systemImage: "creditcard.circle")
                     }
-                    .tag("0")
                 EventView()
                     .tabItem {
                         Label("Event", systemImage: "circle.hexagongrid.circle")
                     }
-                    .tag("1")
                 DealView()
                     .tabItem {
                         Label("Deal", systemImage: "dollarsign.circle")
                     }
-                    .tag("2")
                 NotificationView()
                     .tabItem {
                         Label("Notifications", systemImage: "bell.circle")
                     }
-                    .tag("3")
                 MenuView()
                     .tabItem {
                         Label("Menu", systemImage: "list.bullet.circle")
                     }
-                    .tag("4")
             }
             .accentColor(.app)
             

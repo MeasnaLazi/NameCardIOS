@@ -11,7 +11,7 @@ import Combine
 
 class NameCardViewModel : BaseViewModel, ObservableObject {
     
-    private let _nameCardRepository: NameCardRepository
+    private let nameCardRepository: NameCardRepository
     
     @Published private(set) var state: ViewState = .initial
     @Published private(set) var cards: [Card] = []
@@ -20,26 +20,26 @@ class NameCardViewModel : BaseViewModel, ObservableObject {
     @Published private(set) var count: Int = 0
     
     override init() {
-        self._nameCardRepository = NameCardRepositoryImp(requestExecute: APIClient())
+        self.nameCardRepository = NameCardRepositoryImp(requestExecute: APIClient())
     }
     
     init(requestExecutor: RequestExecutor) {
-        self._nameCardRepository = NameCardRepositoryImp(requestExecute: requestExecutor)
+        self.nameCardRepository = NameCardRepositoryImp(requestExecute: requestExecutor)
     }
     
     func onViewAppear() {
-        _getAllNameCard(search: "", page: 1)
+        getAllNameCard(search: "", page: 1)
     }
     
     func onSearch(search: String, page: Int) {
-        _getAllNameCard(search: search, page: page)
+        getAllNameCard(search: search, page: page)
     }
     
     func onSearchClose() {
         self.cards = self.firstLoadCards
     }
     
-    private func _getAllNameCard(search: String, page: Int) {
+    private func getAllNameCard(search: String, page: Int) {
         
         if search.isEmpty && page == 1 && !self.firstLoadCards.isEmpty {
             self.cards = self.firstLoadCards
@@ -48,7 +48,7 @@ class NameCardViewModel : BaseViewModel, ObservableObject {
         
         state = .loading
         
-        _nameCardRepository.getNameCards(search: search, page: page)
+        nameCardRepository.getNameCards(search: search, page: page)
             .receive(on: RunLoop.main)
             .sink { [weak self] completion in
                 switch (completion) {

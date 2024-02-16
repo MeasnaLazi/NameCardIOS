@@ -28,7 +28,6 @@
 		556F7CB12B15724A001FC880 /* NameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F7CB02B15724A001FC880 /* NameCardView.swift */; };
 		556F7CBC2B1573E7001FC880 /* ItemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F7CBB2B1573E7001FC880 /* ItemCardView.swift */; };
 		556F7CBE2B157A5F001FC880 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F7CBD2B157A5F001FC880 /* DetailView.swift */; };
-		556F7CC22B158FEA001FC880 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F7CC12B158FEA001FC880 /* ItemDetailView.swift */; };
 		558946C82B1109B800AFB838 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946C72B1109B800AFB838 /* Requestable.swift */; };
 		558946CA2B110B1D00AFB838 /* Responable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946C92B110B1D00AFB838 /* Responable.swift */; };
 		558946CE2B11306900AFB838 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558946CD2B11306900AFB838 /* AuthApi.swift */; };
@@ -119,7 +118,6 @@
 		556F7CB02B15724A001FC880 /* NameCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCardView.swift; sourceTree = "<group>"; };
 		556F7CBB2B1573E7001FC880 /* ItemCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardView.swift; sourceTree = "<group>"; };
 		556F7CBD2B157A5F001FC880 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		556F7CC12B158FEA001FC880 /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 		558946C72B1109B800AFB838 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		558946C92B110B1D00AFB838 /* Responable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responable.swift; sourceTree = "<group>"; };
 		558946CD2B11306900AFB838 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
@@ -254,18 +252,9 @@
 		556F7CBF2B15878F001FC880 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				556F7CC02B158FD8001FC880 /* Widgets */,
 				556F7CBD2B157A5F001FC880 /* DetailView.swift */,
 			);
 			path = Detail;
-			sourceTree = "<group>";
-		};
-		556F7CC02B158FD8001FC880 /* Widgets */ = {
-			isa = PBXGroup;
-			children = (
-				556F7CC12B158FEA001FC880 /* ItemDetailView.swift */,
-			);
-			path = Widgets;
 			sourceTree = "<group>";
 		};
 		558946CB2B112EC100AFB838 /* Api */ = {
@@ -700,7 +689,6 @@
 				556F7CBE2B157A5F001FC880 /* DetailView.swift in Sources */,
 				55CBF3082B2FD9C200AAA43E /* VMFactory.swift in Sources */,
 				5511D52D2B1254B5000ADA01 /* Text+Extension.swift in Sources */,
-				556F7CC22B158FEA001FC880 /* ItemDetailView.swift in Sources */,
 				5543BA5A2B2BE6B500035E39 /* DetectViewModel.swift in Sources */,
 				55BB36922B649460002C16D6 /* MyQRCodeViewModel.swift in Sources */,
 				558946E32B113EFD00AFB838 /* LoginViewModel.swift in Sources */,

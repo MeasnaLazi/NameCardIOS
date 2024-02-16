@@ -63,7 +63,6 @@ struct LoginView : View {
         
                 Spacer()
             }
-            .background(Color.background)
             .onAppear() {
                 _viewModel.onViewAppear(refreshToken: refreshToken)
             }
