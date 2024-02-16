@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Color {
-    static let primary = Color.init(hex: 0xEE7447)
+//    static let appColor = Color.init("appColor")
     static let secondary = Color.init(hex: 0xDCDE3B)
     static let text = Color.init(hex: 0x101010)
     static let textSecondary = Color.init(hex: 0x686868)
@@ -17,6 +17,7 @@ extension Color {
     static let bgNavMenuItem = Color.init(hex: 0xF1F1F1)
     static let shadow = Color.init(hex: 0xCCCCCC)
     static let bgDefault = Color.init(hex: 0xEEEEEE)
+//    static let unselect = Color.init("unselectColor")
     
     init(hex: UInt, alpha: Double = 1) {
         self.init(.sRGB,

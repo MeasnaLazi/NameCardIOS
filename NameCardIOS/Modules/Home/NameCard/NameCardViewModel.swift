@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 
-class HomeViewModel : BaseViewModel, ObservableObject {
+class NameCardViewModel : BaseViewModel, ObservableObject {
     
     private let _nameCardRepository: NameCardRepository
     

@@ -15,8 +15,8 @@ class VMFactory {
     var loginViewModel: LoginViewModel {
         isUITesting ? LoginViewModel(requestExecute: MockAPIClient()) : LoginViewModel()
     }
-    var homeViewModel: HomeViewModel {
-        isUITesting ? HomeViewModel(requestExecutor: MockAPIClient()) : HomeViewModel()
+    var nameCardViewModel: NameCardViewModel {
+        isUITesting ? NameCardViewModel(requestExecutor: MockAPIClient()) : NameCardViewModel()
     }
     var myQRCodeViewModel: MyQRCodeViewModel {
         isUITesting ? MyQRCodeViewModel(requestExecute: MockAPIClient()) : MyQRCodeViewModel()

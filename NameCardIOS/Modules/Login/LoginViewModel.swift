@@ -29,6 +29,20 @@ class LoginViewModel : BaseViewModel, ObservableObject {
     }
     
     func onLoginClick(username: String, password: String) {
+        
+        guard !username.isEmpty else {
+            errorMessage = "Username required!"
+            return
+        }
+        guard !password.isEmpty else {
+            errorMessage = "Password required!"
+            return
+        }
+        guard password.count > 5 else {
+            errorMessage = "Invalid Username or Password!"
+            return
+        }
+        
         let jsonData = ["username" : username, "password" : password].toJsonData()
         self._onLogin(data: jsonData)
     }

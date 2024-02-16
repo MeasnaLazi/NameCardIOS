@@ -18,20 +18,7 @@ struct LoginView : View {
     @State private var _password: String = ""
     @State private var _moveToHomeScreen: Bool = false
     
-    private func onLoginClick() {
-        guard !_username.isEmpty else {
-            _viewModel.errorMessage = "Username required!"
-            return
-        }
-        guard !_password.isEmpty else {
-            _viewModel.errorMessage = "Password required!"
-            return
-        }
-        guard _password.count > 5 else {
-            _viewModel.errorMessage = "Invalid Username or Password!"
-            return
-        }
-        
+    private func onLoginClick() {        
         _viewModel.onLoginClick(username: _username.lowercased(), password: _password)
     }
     
@@ -46,6 +33,7 @@ struct LoginView : View {
                 Text("").onAppear() {
                     token = _viewModel.login?.token ?? ""
                     refreshToken = _viewModel.login?.refreshToken ?? ""
+                    
                     if !token.isEmpty && !refreshToken.isEmpty {
                         _moveToHomeScreen = true
                     }
@@ -57,8 +45,12 @@ struct LoginView : View {
                 }
             }
         
-            VStack {
-                logoImageView
+            VStack(alignment: .leading) {
+                
+                Text("Log in")
+                    .font(.headline())
+                    .padding(.top)
+                    
                 usernameTextField
                     .padding(.top, 32)
                 passwordTextField
@@ -71,33 +63,19 @@ struct LoginView : View {
         
                 Spacer()
             }
+            .background(Color.background)
             .onAppear() {
                 _viewModel.onViewAppear(refreshToken: refreshToken)
             }
             
             HStack {}
                 .background(EmptyView())
-                .fullScreenCover(isPresented: $_moveToHomeScreen, content: { HomeView() })
+                .fullScreenCover(isPresented: $_moveToHomeScreen ){ HomeView() }
         }
         .safeAreaPadding(.horizontal, 20)
         .overlay {
             if _viewModel.state == .loading {
                 LoadingView()
-            }
-        }
-    }
-    
-    private var logoImageView: some View {
-        HStack {
-            VStack {
-                Image(systemName: "creditcard.viewfinder")
-                    .foregroundColor(.primary)
-                    .font(.system(size: 40))
-                    .padding(.top, 12)
-                Text("BC Wallet")
-                    .font(.primary(.bold, size: 20))
-                    .foregroundColor(.text)
-                    .padding(.top, 10)
             }
         }
     }
@@ -135,7 +113,7 @@ struct LoginView : View {
     
     private var loginButton: some View {
         ZStack {
-            Button("Login", action: onLoginClick)
+            Button("LOG IN", action: onLoginClick)
                 .buttonStyle(FullWidthButton())
                 .disabled(_viewModel.state == .loading)
                 .accessibilityIdentifier("loginButton")

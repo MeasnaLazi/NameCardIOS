@@ -18,16 +18,20 @@ extension Font {
         var fontName: String {
             switch self {
             case .regular:
-                return "SFProText-Regular"
+                return "Inter-Light"
             case .medium:
-                return "SFProText-Medium"
+                return "Inter-Regular"
             case .bold:
-                return "SFProText-Bold"
+                return "Inter-Medium"
             }
         }
     }
     
     static func primary(_ type: `Type`, size: CGFloat = 16) -> Font {
-        return .custom(type.fontName, size: size)
+        return .custom(type.fontName, size: size, relativeTo: .body)
+    }
+    
+    static func headline(_ size: CGFloat = 36) -> Font {
+        return .custom("Comfortaa-Regular", size: size, relativeTo: .largeTitle)
     }
 }
