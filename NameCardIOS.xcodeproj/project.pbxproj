@@ -17,6 +17,7 @@
 		551D2CF42B23F0310001C342 /* BasePagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D2CF32B23F0310001C342 /* BasePagination.swift */; };
 		55220D7E2B1C11CB00840F71 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 55220D7D2B1C11CB00840F71 /* login.json */; };
 		55220D812B1C13D700840F71 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55220D802B1C13D700840F71 /* MockAPIClient.swift */; };
+		552A82562B80540B001758D2 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552A82552B80540B001758D2 /* ItemDetailView.swift */; };
 		552C81A22B13AACA00E38B0B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C81A12B13AACA00E38B0B /* Card.swift */; };
 		552F41522B1819D50092146B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F41512B1819D50092146B /* LoadingView.swift */; };
 		554017252B2E7EA7007B9607 /* name_cards_search.json in Resources */ = {isa = PBXBuildFile; fileRef = 554017242B2E7EA7007B9607 /* name_cards_search.json */; };
@@ -108,6 +109,7 @@
 		551D2CF32B23F0310001C342 /* BasePagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePagination.swift; sourceTree = "<group>"; };
 		55220D7D2B1C11CB00840F71 /* login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
 		55220D802B1C13D700840F71 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
+		552A82552B80540B001758D2 /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 		552C81A12B13AACA00E38B0B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		552F41512B1819D50092146B /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		554017242B2E7EA7007B9607 /* name_cards_search.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = name_cards_search.json; sourceTree = "<group>"; };
@@ -240,6 +242,14 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		552A82542B8053F0001758D2 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				552A82552B80540B001758D2 /* ItemDetailView.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
 		556F7CBA2B1573CA001FC880 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +262,7 @@
 		556F7CBF2B15878F001FC880 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				552A82542B8053F0001758D2 /* Widgets */,
 				556F7CBD2B157A5F001FC880 /* DetailView.swift */,
 			);
 			path = Detail;
@@ -683,6 +694,7 @@
 				5502B9B52B1D714300C544A2 /* MockNameCardApi.swift in Sources */,
 				558946DF2B113BD300AFB838 /* Login.swift in Sources */,
 				558946DA2B113AC300AFB838 /* AuthRepository.swift in Sources */,
+				552A82562B80540B001758D2 /* ItemDetailView.swift in Sources */,
 				558E7BAE2B7EF17500C70C39 /* MyDealView.swift in Sources */,
 				55A82EE22B16DC88001C3F91 /* String+Extension.swift in Sources */,
 				558946D62B11391600AFB838 /* BaseRepository.swift in Sources */,

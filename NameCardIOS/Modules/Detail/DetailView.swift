@@ -10,7 +10,8 @@ import SwiftUI
 struct DetailView : View {
     
     var card: Card
-    @State 
+    
+    @State
     private var opacity = 0.0
     
     var body: some View {
@@ -30,10 +31,6 @@ struct DetailView : View {
                 }
                 .opacity(opacity)
             }
-      
-            
-           
-            
         }
         .background(Color.white.ignoresSafeArea())
      
@@ -70,29 +67,29 @@ struct DetailView : View {
                 .padding(.bottom, -12)
             
             Section {
-                ItemDetailView(label: "Position", text: card.position, icon: "circle.circle", actionOpen: .none)
+                ItemDetailView(label: "Position", text: card.position, icon: "circle.circle")
             }
             Section {
-                ItemDetailView(label: "First Name", text: card.firstname, icon: "person.circle", actionOpen: .none)
+                ItemDetailView(label: "First Name", text: card.firstname, icon: "person.circle")
                 
                 if let lastname = card.lastname {
-                    ItemDetailView(label: "Last Name", text: lastname, icon: "person.circle", actionOpen: .none)
+                    ItemDetailView(label: "Last Name", text: lastname, icon: "person.circle")
                 }
             }
             
             Section {
-                ItemDetailView(label: "Phone", text: card.phone, icon: "phone.circle", actionOpen: .phone)
+                ItemDetailView(label: "Phone", text: card.phone, icon: "phone.circle")
            
-                ItemDetailView(label: "Email", text: card.email, icon: "envelope.circle", actionOpen: .email)
+                ItemDetailView(label: "Email", text: card.email, icon: "envelope.circle")
                 
                 if let website = card.website {
-                    ItemDetailView(label: "Website", text: website, icon: "link.circle", actionOpen: .website)
+                    ItemDetailView(label: "Website", text: website, icon: "link.circle")
                 }
             }
                 
             if let address = card.address {
                 Section {
-                    ItemDetailView(label: "Address", text: address, icon: "location.circle", actionOpen: .map)
+                    ItemDetailView(label: "Address", text: address, icon: "location.circle")
                 }
             }
         }
@@ -101,15 +98,11 @@ struct DetailView : View {
     
     private var buttonContainerView: some View {
         HStack {
-            actionView(icon: "phone", text: "Call")
-            
+            actionView(icon: "phone", text: "Call", actionOpen: .phone)
             Spacer()
-            
-            actionView(icon: "envelope", text: "Mail")
-            
+            actionView(icon: "envelope", text: "Mail", actionOpen: .email)
             Spacer()
-            
-            actionView(icon: "phone", text: "Call")
+            actionView(icon: "location", text: "Location", actionOpen: .map)
         }
         .padding(.top, 12)
         .padding(.bottom, 12)
@@ -119,7 +112,8 @@ struct DetailView : View {
     }
     
     @ViewBuilder
-    private func actionView(icon: String, text: String) -> some View {
+    private func actionView(icon: String, text: String, actionOpen: DetailView.ActionOpen) -> some View {
+        
         VStack {
             Image(systemName: icon)
                 .foregroundStyle(.white)
@@ -133,66 +127,12 @@ struct DetailView : View {
         .frame(maxWidth: .infinity)
         .background(Color.app)
         .cornerRadius(5)
-    }
-}
-
-struct ItemDetailView : View {
-    
-    var label: String
-    var text: String
-    var icon: String
-    var actionOpen: DetailView.ActionOpen
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Image(systemName: icon)
-                    .font(.system(size: 12))
-                    .foregroundColor(.text)
-                Text(label)
-                    .font(.primary(.regular, size: 12))
-                    .foregroundColor(.text)
-                Spacer()
-            }
-            
-            Text(text)
-                .font(.primary(.medium))
-                .foregroundColor(.text)
-                .padding(.top, 2)
+        .onTapGesture {
+            actionOpen.open(text: text)
         }
     }
 }
 
-
-
-//struct SwipeToDismissModifier: ViewModifier {
-//    var onChange: (_ height: Double) -> Void
-//    var onDismiss: () -> Void
-//    @State private var offset: CGSize = .zero
-//
-//    func body(content: Content) -> some View {
-//        content
-//            .offset(y: offset.height)
-//            .animation(.interactiveSpring(), value: offset)
-//            .simultaneousGesture(
-//                DragGesture()
-//                    .onChanged { gesture in
-//                        onChange(gesture.translation.height)
-//                        if gesture.translation.width < 50 {
-//                            offset = gesture.translation
-//                        }
-//                    }
-//                    .onEnded { _ in
-//                        if abs(offset.height) > 100 {
-//                            onDismiss()
-//                        } else {
-//                            offset = .zero
-//                            onChange(49)
-//                        }
-//                    }
-//            )
-//    }
-//}
 
 extension DetailView {
     enum ActionOpen {
