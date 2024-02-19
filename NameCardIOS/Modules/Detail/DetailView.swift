@@ -14,9 +14,23 @@ struct DetailView : View {
     @State
     private var opacity = 0.0
     
+    @Environment(\.dismiss) 
+    var dismiss
+    
     var body: some View {
         VStack(spacing: 0) {
-            imageView
+            ZStack(alignment: .topTrailing) {
+                imageView
+                
+                Button(action: {
+                    dismiss()
+                   }) {
+                       Image(systemName: "xmark")
+                   }
+                   .buttonStyle(OvalCloseButton())
+                   .padding(.top, 10)
+                   .padding(.trailing, 10)
+            }
             
             ZStack(alignment: .top) {
                 informationView

@@ -28,3 +28,14 @@ struct FullWidthButton: ButtonStyle {
                             .fill(getFillColor(press: configuration.isPressed)))
     }
 }
+
+struct OvalCloseButton: ButtonStyle {
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration
+            .label
+            .padding(10)
+            .foregroundColor(.white)
+            .background(Circle().fill(.bgBlack50))
+    }
+}

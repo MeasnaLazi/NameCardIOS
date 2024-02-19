@@ -82,11 +82,8 @@ struct NameCardView : View {
                             weScanView
                         }
                     HStack {}
-                        .sheet(isPresented: .constant(selectedCard != nil),
-                        onDismiss: {
-                            selectedCard = nil
-                        }) {
-                            DetailView(card: selectedCard!)
+                        .sheet(item: $selectedCard) { selectedCard in
+                            DetailView(card: selectedCard)
                         }
                 }
             }
