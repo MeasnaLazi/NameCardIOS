@@ -45,7 +45,7 @@ struct NameCardView : View {
     
     var body: some View {
         
-        NavigationView {
+        NavigationStack {
             ZStack {
                 switch viewModel.state {
                 case .initial:

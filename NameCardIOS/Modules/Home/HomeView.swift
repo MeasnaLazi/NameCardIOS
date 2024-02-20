@@ -41,13 +41,13 @@ struct HomeView : View {
             }
             .accentColor(.app)
             
-            VStack {
-                Spacer()
-                Rectangle()
-                    .frame(maxWidth: .infinity, maxHeight: 1)
-                    .foregroundColor(.border)
-                    .padding(.bottom, 60)
-            }
+//            VStack {
+//                Spacer()
+//                Rectangle()
+//                    .frame(maxWidth: .infinity, maxHeight: 1)
+//                    .foregroundColor(.border)
+//                    .padding(.bottom, 60)
+//            }
         }
     }
 }

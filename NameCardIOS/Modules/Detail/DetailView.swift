@@ -11,11 +11,9 @@ struct DetailView : View {
     
     var card: Card
     
-    @State
-    private var opacity = 0.0
+    @State private var opacity = 0.0
     
-    @Environment(\.dismiss) 
-    var dismiss
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack(spacing: 0) {
