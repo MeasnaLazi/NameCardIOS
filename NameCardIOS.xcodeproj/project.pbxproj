@@ -74,10 +74,15 @@
 		55CBF3082B2FD9C200AAA43E /* VMFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CBF3072B2FD9C200AAA43E /* VMFactory.swift */; };
 		55CBF30A2B2FDB8C00AAA43E /* HomeViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CBF3092B2FDB8C00AAA43E /* HomeViewUITests.swift */; };
 		55CBF30C2B2FDBE600AAA43E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CBF30B2B2FDBE600AAA43E /* Config.swift */; };
+		55D032642B8547CD00CC64F0 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D032632B8547CD00CC64F0 /* SearchBarView.swift */; };
+		55D032662B85636F00CC64F0 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D032652B85636F00CC64F0 /* FlowLayout.swift */; };
 		55DCCE4D2B689856000ABEB8 /* ProfileApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DCCE4C2B689856000ABEB8 /* ProfileApi.swift */; };
 		55DCCE4F2B6898A8000ABEB8 /* MockProfileApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DCCE4E2B6898A8000ABEB8 /* MockProfileApi.swift */; };
 		55DCCE512B689914000ABEB8 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DCCE502B689914000ABEB8 /* ProfileRepository.swift */; };
 		55DCCE532B68997C000ABEB8 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DCCE522B68997C000ABEB8 /* Profile.swift */; };
+		55F1E8C72B8589C40009A265 /* FilterConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F1E8C62B8589C40009A265 /* FilterConfigView.swift */; };
+		55F1E8C92B858BB60009A265 /* AnimationAirView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F1E8C82B858BB60009A265 /* AnimationAirView.swift */; };
+		55F1E8CB2B858BE30009A265 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F1E8CA2B858BE30009A265 /* TagView.swift */; };
 		55F6745B2B1970600066E6EF /* LoginViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F6745A2B1970600066E6EF /* LoginViewUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -169,10 +174,15 @@
 		55CBF3072B2FD9C200AAA43E /* VMFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMFactory.swift; sourceTree = "<group>"; };
 		55CBF3092B2FDB8C00AAA43E /* HomeViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewUITests.swift; sourceTree = "<group>"; };
 		55CBF30B2B2FDBE600AAA43E /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		55D032632B8547CD00CC64F0 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		55D032652B85636F00CC64F0 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		55DCCE4C2B689856000ABEB8 /* ProfileApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileApi.swift; sourceTree = "<group>"; };
 		55DCCE4E2B6898A8000ABEB8 /* MockProfileApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProfileApi.swift; sourceTree = "<group>"; };
 		55DCCE502B689914000ABEB8 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		55DCCE522B68997C000ABEB8 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		55F1E8C62B8589C40009A265 /* FilterConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterConfigView.swift; sourceTree = "<group>"; };
+		55F1E8C82B858BB60009A265 /* AnimationAirView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationAirView.swift; sourceTree = "<group>"; };
+		55F1E8CA2B858BE30009A265 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		55F6745A2B1970600066E6EF /* LoginViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -370,6 +380,7 @@
 		558E7BB12B7EF1D000C70C39 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				55F1E8C52B8589B40009A265 /* Widgets */,
 				558E7BB22B7EF1E400C70C39 /* EventView.swift */,
 			);
 			path = Event;
@@ -509,6 +520,8 @@
 			isa = PBXGroup;
 			children = (
 				552F41512B1819D50092146B /* LoadingView.swift */,
+				55D032632B8547CD00CC64F0 /* SearchBarView.swift */,
+				55D032652B85636F00CC64F0 /* FlowLayout.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -537,6 +550,16 @@
 				55CBF3072B2FD9C200AAA43E /* VMFactory.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		55F1E8C52B8589B40009A265 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				55F1E8C62B8589C40009A265 /* FilterConfigView.swift */,
+				55F1E8C82B858BB60009A265 /* AnimationAirView.swift */,
+				55F1E8CA2B858BE30009A265 /* TagView.swift */,
+			);
+			path = Widgets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -692,6 +715,7 @@
 				55BB36902B649350002C16D6 /* MyQRCodeView.swift in Sources */,
 				552F41522B1819D50092146B /* LoadingView.swift in Sources */,
 				5502B9B52B1D714300C544A2 /* MockNameCardApi.swift in Sources */,
+				55D032642B8547CD00CC64F0 /* SearchBarView.swift in Sources */,
 				558946DF2B113BD300AFB838 /* Login.swift in Sources */,
 				558946DA2B113AC300AFB838 /* AuthRepository.swift in Sources */,
 				552A82562B80540B001758D2 /* ItemDetailView.swift in Sources */,
@@ -711,9 +735,13 @@
 				55A82EDE2B16D986001C3F91 /* NameCardViewModel.swift in Sources */,
 				55DCCE532B68997C000ABEB8 /* Profile.swift in Sources */,
 				558946E92B11888200AFB838 /* Button+Style.swift in Sources */,
+				55F1E8C72B8589C40009A265 /* FilterConfigView.swift in Sources */,
 				558946CA2B110B1D00AFB838 /* Responable.swift in Sources */,
+				55F1E8C92B858BB60009A265 /* AnimationAirView.swift in Sources */,
+				55F1E8CB2B858BE30009A265 /* TagView.swift in Sources */,
 				5502B9B02B1D681900C544A2 /* MockServer.swift in Sources */,
 				558E7BA72B7EEEFC00C70C39 /* HomeView.swift in Sources */,
+				55D032662B85636F00CC64F0 /* FlowLayout.swift in Sources */,
 				558946E72B11810A00AFB838 /* Color+Extension.swift in Sources */,
 				55DCCE4F2B6898A8000ABEB8 /* MockProfileApi.swift in Sources */,
 				558946EE2B118A7C00AFB838 /* Font+Extension.swift in Sources */,

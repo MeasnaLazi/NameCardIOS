@@ -10,32 +10,32 @@ import SwiftUI
 
 struct LoginView : View {
     
-    @ObservedObject private var _viewModel = VMFactory.shared.loginViewModel
+    @ObservedObject private var viewModel = VMFactory.shared.loginViewModel
     @AppStorage("token") private var token = ""
     @AppStorage("refreshToken") private var refreshToken = ""
     
-    @State private var _username: String = ""
-    @State private var _password: String = ""
-    @State private var _moveToHomeScreen: Bool = false
+    @State private var username: String = ""
+    @State private var password: String = ""
+    @State private var moveToHomeScreen: Bool = false
     
     private func onLoginClick() {        
-        _viewModel.onLoginClick(username: _username.lowercased(), password: _password)
+        viewModel.onLoginClick(username: username.lowercased(), password: password)
     }
     
     var body: some View {
         ZStack {
-            switch _viewModel.state {
+            switch viewModel.state {
             case .initial:
                 Text("")
             case .loading:
                 Text("")
             case .fetched:
                 Text("").onAppear() {
-                    token = _viewModel.login?.token ?? ""
-                    refreshToken = _viewModel.login?.refreshToken ?? ""
+                    token = viewModel.login?.token ?? ""
+                    refreshToken = viewModel.login?.refreshToken ?? ""
                     
                     if !token.isEmpty && !refreshToken.isEmpty {
-                        _moveToHomeScreen = true
+                        moveToHomeScreen = true
                     }
                 }
             case .fail:
@@ -56,7 +56,7 @@ struct LoginView : View {
                 passwordTextField
                     .padding(.top, 8)
                     .padding(.bottom, 8)
-                Text(_viewModel.errorMessage)
+                Text(viewModel.errorMessage)
                     .errorStyle()
                 loginButton
                     .padding(.top, 8)
@@ -64,16 +64,16 @@ struct LoginView : View {
                 Spacer()
             }
             .onAppear() {
-                _viewModel.onViewAppear(refreshToken: refreshToken)
+                viewModel.onViewAppear(refreshToken: refreshToken)
             }
             
             HStack {}
                 .background(EmptyView())
-                .fullScreenCover(isPresented: $_moveToHomeScreen ){ HomeView() }
+                .fullScreenCover(isPresented: $moveToHomeScreen ){ HomeView() }
         }
         .safeAreaPadding(.horizontal, 20)
         .overlay {
-            if _viewModel.state == .loading {
+            if viewModel.state == .loading {
                 LoadingView()
             }
         }
@@ -87,9 +87,9 @@ struct LoginView : View {
                 Spacer()
             }
             
-            TextField("Username", text: $_username)
+            TextField("Username", text: $username)
                 .primaryTextFieldStyle()
-                .disabled(_viewModel.state == .loading)
+                .disabled(viewModel.state == .loading)
                 .accessibilityIdentifier("usernameTextField")
         }
     }
@@ -102,9 +102,9 @@ struct LoginView : View {
                 Spacer()
             }
 
-            SecureField("Password", text: $_password)
+            SecureField("Password", text: $password)
                 .primaryTextFieldStyle()
-                .disabled(_viewModel.state == .loading)
+                .disabled(viewModel.state == .loading)
                 .accessibilityIdentifier("passwordTextField")
             
         }
@@ -114,7 +114,7 @@ struct LoginView : View {
         ZStack {
             Button("LOG IN", action: onLoginClick)
                 .buttonStyle(FullWidthButton())
-                .disabled(_viewModel.state == .loading)
+                .disabled(viewModel.state == .loading)
                 .accessibilityIdentifier("loginButton")
             
     
@@ -123,7 +123,7 @@ struct LoginView : View {
                 ProgressView()
                     .padding(.trailing, 16)
                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                    .opacity(_viewModel.state == .loading ? 1.0 : 0.0)
+                    .opacity(viewModel.state == .loading ? 1.0 : 0.0)
             }
         }
     }
